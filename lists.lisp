@@ -13,7 +13,6 @@
 
 ;; Ex 2.13
 ; Write the functions to get each word in the list: (((FUN)) (IN THE) (SUN))
-
 (defun get-first (my-list)
   (caaar my-list))
 
@@ -25,3 +24,10 @@
 
 (defun get-third (my-list)
   (caaddr my-list))
+
+;; Ex 2.18
+; Write a function that takes any two inputs and make a list of them using CONS
+(defun generate-list (a b)
+  (cons a (cons b nil)))
+
+
