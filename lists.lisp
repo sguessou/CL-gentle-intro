@@ -42,3 +42,19 @@
 ; Show how to write the DUO-CONS function.
 (defun duo-cons (a b alist)
   (cons a (cons b alist)))  
+
+;;; Ex 2.23 
+;; TWO-DEEPER is a function that surrounds its input with two level of parentheses.
+;; TWO-DEEPER of MOO is ((MOO)). TWO-DEEPER of (BOW WOW) is (((BOW WOW))).
+;; Show how to write TWO-DEEPER using list. Write another version using CONS.
+; LIST version:
+(defun two-deeper (el)
+  (list (list el)))
+; CONS version:
+(defun two-deeper (el)
+  (cons (cons el nil) nil))
+
+
+
+
+
