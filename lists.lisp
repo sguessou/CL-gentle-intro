@@ -54,7 +54,10 @@
 (defun two-deeper (el)
   (cons (cons el nil) nil))
 
-
+;; Ex 2.24
+; What built-in Lisp function would extract the symbol NIGHT from the list (((GOOD)) ((NIGHT)))?
+(caaadr '(((GOOD)) ((NIGHT))))
+ 
 
 
 
