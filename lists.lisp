@@ -63,7 +63,7 @@
 (defun unary-add1 (n)
   (cons 'x n))
 
-;; Ex 2.32
+;; Ex 2.31
 ; Write a UNARY-ZEROP predicate
 (defun unary-zerop (n)
   (eq (length n) 0))
@@ -73,3 +73,7 @@
 (defun unary-greater (n m)
   (> (length n) m))
 
+;; Ex 2.34
+; Write an expression involving cascaded calls to CONS to construct the dotted list (A B C . D).
+(defun my-func ()
+  (cons 'a (cons 'b (cons 'c 'd))))
