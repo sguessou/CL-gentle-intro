@@ -63,8 +63,13 @@
 (defun unary-add1 (n)
   (cons 'x n))
 
-
 ;; Ex 2.32
 ; Write a UNARY-ZEROP predicate
 (defun unary-zerop (n)
   (eq (length n) 0))
+
+;; Ex 2.32
+; Write a UNARY-GREATERP predicate, analogous to the > predicate on ordinary numbers.
+(defun unary-greater (n m)
+  (> (length n) m))
+
