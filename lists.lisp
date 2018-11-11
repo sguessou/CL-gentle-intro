@@ -77,3 +77,8 @@
 ; Write an expression involving cascaded calls to CONS to construct the dotted list (A B C . D).
 (defun my-func ()
   (cons 'a (cons 'b (cons 'c 'd))))
+
+;; Ex 2.35
+; Write an expression to construct this list: ((A . B) (C . D)).
+(defun my-cons ()
+  (list (cons 'a 'b) (cons 'c 'd)))
