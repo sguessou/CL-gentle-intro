@@ -58,6 +58,13 @@
 ; What built-in Lisp function would extract the symbol NIGHT from the list (((GOOD)) ((NIGHT)))?
 (caaadr '(((GOOD)) ((NIGHT))))
  
+;; Ex 2.29
+; Write a function UNARY-ADD1 that increases a unary number by one.
+(defun unary-add1 (n)
+  (cons 'x n))
 
 
-
+;; Ex 2.32
+; Write a UNARY-ZEROP predicate
+(defun unary-zerop (n)
+  (eq (length n) 0))
