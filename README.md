@@ -4,3 +4,4 @@
 
 * Chapter 1 - **Functions and Data**
 * Chapter 2 - **Lists**
+* Chapter 3 - **EVAL Notation**
