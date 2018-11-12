@@ -17,3 +17,10 @@
 ; the output should be (4 MOO GOO GAI PAN).
 (defun addlength (my-list)
   (cons (length my-list) my-list))
+
+;; Ex 3.22 d
+; Write a predicate FIRSTP that returns T if its first argument (a symbol) is equal to the first element of its second argument (a list).
+; That is, (FIRSTP 'FOO '(FOO BAR BAZ)) should return T.
+; (FIRSTP 'BOING '(FOO BAR BAZ)) should return NIL.
+(defun firstp (s my-list)
+  (equal s (car my-list)))  
