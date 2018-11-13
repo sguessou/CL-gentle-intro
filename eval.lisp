@@ -24,3 +24,9 @@
 ; (FIRSTP 'BOING '(FOO BAR BAZ)) should return NIL.
 (defun firstp (s my-list)
   (equal s (car my-list)))  
+
+;; Ex 3.22 e
+; Write a function MID-ADD1 that adds 1 to the middle element of a three element list. For example, (MID-ADD1 '(TAKE 2 COOKIES)) should return the list (TAKE 3 COOKIES).
+; Note: You are not allowed to make MID-ADD1 a function of three inputs. It has to take a single input that is a list of three elements.
+(defun mid-add1 (my-list)
+  (list (first my-list) (+ (second my-list) 1) (third my-list)))
