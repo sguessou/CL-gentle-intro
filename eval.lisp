@@ -30,3 +30,9 @@
 ; Note: You are not allowed to make MID-ADD1 a function of three inputs. It has to take a single input that is a list of three elements.
 (defun mid-add1 (my-list)
   (list (first my-list) (+ (second my-list) 1) (third my-list)))
+
+;; Ex 3.22 f
+; Write a function F-TO-C that converts a temperature from Fahrenheit to Celsius. The formula for doing the conversion is: Celsius temperature = [5X(Fahrenheit temperature - 32)]/9.
+; To go in the opposite direction, the formula is: Fahrenheit temperature = (9/5X Celsius temperature) + 32.
+(defun f-to-c (temp)
+  (/ (* (- temp 32) 5) 9))
