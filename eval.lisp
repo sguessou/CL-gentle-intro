@@ -36,3 +36,14 @@
 ; To go in the opposite direction, the formula is: Fahrenheit temperature = (9/5X Celsius temperature) + 32.
 (defun f-to-c (temp)
   (/ (* (- temp 32) 5) 9))
+
+;; Ex 3.23
+; Write each of the following functions in Church's lambda notation: DOUBLE, SQUARE, ONEMOREREP
+(defun my-double (n)
+  (* n 2))
+
+(defun my-square (n)
+  (* n n))
+
+(defun onemorerep (n)
+  (1+ n))
