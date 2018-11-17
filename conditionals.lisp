@@ -65,7 +65,7 @@
         (t x)))
 
 
-;; Ex.10
+;; Ex 4.10
 ; Write a function CONSTRAIN that takes three inputs called X, MAX, and MIN. If X is less than MIN, it should return MIN; if X is greater than MAX, it should return MAX.
 ; Otherwise, since X is between MIN and MAX, it should return X. (CONSTRAIN 3 -50 50) should return 3. (CONSTRAIN 92 -50 50) should return 50.
 ; Write one version using COND and another using nested IFs.
@@ -80,3 +80,12 @@
   (if (< min x)
       min)
   x)
+
+;; Ex 4.11
+; Write a function FIRSTZERO that takes a list of three numbers as input and returns a word (one of "first," "second," "third," or "none") indicating where the first zero appears in the list.
+; Example: (FIRSTZERO '(3 0 4)) should return SECOND. What happens if you try to call FIRSTZERO with three separate numbers instead of a list of three numbers, as in (FIRSTZERO 3 0 4)?
+(defun firstzero (l)
+  (cond ((equal (first l) 0) 'first)
+        ((equal (second l) 0) 'second)
+        ((equal (third l) 0) 'third)
+        (t 'none)))
