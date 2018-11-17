@@ -24,3 +24,12 @@
   (if (and in t)
       t
       nil))
+
+;; Ex 4.4
+; Write a function ORDERED that takes two numbers as input and makes a list of them in ascending order. 
+; (ORDERED 4 3) should also return (3 4), in other words, the first and second inputs should appear in reverse order when the first is greater than the second.
+(defun ordered (a b)
+  (if (> a b)
+      (list b a)
+      (list a b)))
+
