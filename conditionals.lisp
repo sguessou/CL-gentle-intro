@@ -53,3 +53,13 @@
         ((equal (first x) 'bad) (cons 'awful (rest x)))
         (t (cons 'very x))))
 
+;; Ex 4.9
+; What is wrong with this function? Try out the function on the numbers 3, 4 and -2.
+; Rewrite it so it works correctly.
+(defun make-odd-w (x)
+  (cond (t x)
+        ((not (oddp x)) (+ x 1))))
+
+(defun make-odd-c (x)
+  (cond ((oddp x) (+ x 1))
+        (t x)))
