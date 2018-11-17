@@ -33,3 +33,9 @@
       (list b a)
       (list a b)))
 
+;; Ex 4.6
+; Write a version of the absolute value function MY-ABS using COND instead of IF.
+(defun my-abs (n)
+  (cond ((< n 0) (* n -1))
+        (t n)))
+
