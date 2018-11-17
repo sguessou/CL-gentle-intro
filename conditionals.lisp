@@ -89,3 +89,10 @@
         ((equal (second l) 0) 'second)
         ((equal (third l) 0) 'third)
         (t 'none)))
+
+;; Ex 4.12
+; Write a function CYCLE that cyclically counts from 1 to 99 . CYCLE called with an input of 1 should return 2, with an input of 2 should return 3, and so on.
+; With an input of 99, CYCLE should return 1. That's the cyclical part. Do not try to solve this with 99 COND clauses!
+(defun cycle (n)
+  (cond ((>= n 99) 1)
+        (t (1+ n))))
