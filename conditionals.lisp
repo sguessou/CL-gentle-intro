@@ -119,3 +119,11 @@
   (cond ((and (> n 0) (oddp n)) (* n n))
         ((and (< n 0) (oddp n)) (* n 2))
         (t (/ n 2))))
+
+;; Ex 4.17
+; Write a predicate that returns T if the first input is either BOY or GIRL and the second input is CHILD, or the first input is either MAN or WOMAN and the second input is ADULT.
+(defun fn (a b)
+  (cond ((and (eq a 'boy) (eq b 'child)) t)
+        ((and (eq a 'girl) (eq b 'child)) t)
+        ((and (eq a 'man) (eq b 'adult)) t)
+        ((and (eq a 'woman) (eq b 'adult)) t)))
