@@ -113,4 +113,9 @@
 (defun geq (a b)
   (cond ((>= a b) t)))
 
-
+;; Ex 4.16
+; Write a function that squares a number if it is odd and positive, doubles it if it is odd and negative, and otherwise divides the number by 2.
+(defun fn (n)
+  (cond ((and (> n 0) (oddp n)) (* n n))
+        ((and (< n 0) (oddp n)) (* n 2))
+        (t (/ n 2))))
