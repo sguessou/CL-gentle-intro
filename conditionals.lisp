@@ -127,3 +127,18 @@
         ((and (eq a 'girl) (eq b 'child)) t)
         ((and (eq a 'man) (eq b 'adult)) t)
         ((and (eq a 'woman) (eq b 'adult)) t)))
+;; Ex 4.18
+; Write a function to act as referee in the Rock-Scissors-Paper game. In this game, each player picks one of Rock, Scissors, or Paper, and then both players tell what they picked.
+; Rock "breaks" Scissors, so if the first player picks Rock and the second picks Scissors, the first player wins.
+; Scissors "cuts" Paper, and Paper "covers" Rock. If both players pick the same thing, it's a tie.
+; The function PLAY should take two inputs, each of which is either ROCK, SCISSORS, or PAPER, and return one of the symbols FIRST-WINS, SECOND-WINS, or TIE.
+; Examples: (PLAY 'ROCK 'SCISSORS) should return FIRST-WINS.
+; (PLAY 'PAPER 'SCISSORS) should return SECOND-WINS.
+(defun play (a b)
+  (cond ((or (and (eq a 'paper) (eq b 'rock))
+             (and (eq a 'rock) (eq b 'scissors))
+             (and (eq a 'scissors) (eq b 'paper))) 'first-wins)
+        ((or (and (eq a 'scissors) (eq b 'rock))
+             (and (eq a 'paper) (eq b 'scissors))
+             (and (eq a 'rock) (eq b 'paper))) 'second-wins)
+        ((eq a b) 'tie)))
