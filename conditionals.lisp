@@ -96,3 +96,14 @@
 (defun cycle (n)
   (cond ((>= n 99) 1)
         (t (1+ n))))
+
+;; Ex 4.13
+; Write a function HOWCOMPUTE that is the inverse of the COMPUTE function described previously.
+; HOWCOMPUTE takes three numbers as inputs and figures out what operation would produce the third from the first two.
+; (HOWCOMPUTE 3 4 7) should return SUM-OF.
+; (HOWCOMPUTE 3 4 12) should return PRODUCT-OF.
+; HOWCOMPUTE should return the list BEATS-ME if it can't find a relationship between the firs two inputs and the third.
+(defun howcompute (a b c)
+  (cond ((eq (+ a b) c) 'sum-of)
+        ((eq (* a b) c) 'product-of)
+        (t '(beats me))))
