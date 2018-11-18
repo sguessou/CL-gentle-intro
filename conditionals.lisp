@@ -107,3 +107,10 @@
   (cond ((eq (+ a b) c) 'sum-of)
         ((eq (* a b) c) 'product-of)
         (t '(beats me))))
+
+;; Ex 4.15 
+; Write a predicate called GEQ that returns T if its first input is greater than or equal to its second input.
+(defun geq (a b)
+  (cond ((>= a b) t)))
+
+
