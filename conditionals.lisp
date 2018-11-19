@@ -155,3 +155,19 @@
   (if (and (eq scale 'fahrenheit) (eq temp 212)) t
       (if (and (eq scale 'celsius) (eq temp 100)) t
           nil)))
+
+;; Ex 4.29
+; Write versions of LOGICAL-AND using IF and COND instead of AND.
+(defun logical-and (x y)
+  (and x y t))
+
+(defun logical-and (x y)
+  (cond ((not x) nil)
+        ((not y) nil)
+        (t t)))
+
+(defun logical-and (x y)
+  (if (not x) nil
+      (if (not y) nil
+          t)))
+
