@@ -171,3 +171,7 @@
       (if (not y) nil
           t)))
 
+;; Ex 4.30
+; Write LOGICAL-OR. Make sure it returns only T or NIL for its result.
+(defun logical-or (x y)
+  (not (not (or x y))))
