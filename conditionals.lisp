@@ -127,6 +127,7 @@
         ((and (eq a 'girl) (eq b 'child)) t)
         ((and (eq a 'man) (eq b 'adult)) t)
         ((and (eq a 'woman) (eq b 'adult)) t)))
+
 ;; Ex 4.18
 ; Write a function to act as referee in the Rock-Scissors-Paper game. In this game, each player picks one of Rock, Scissors, or Paper, and then both players tell what they picked.
 ; Rock "breaks" Scissors, so if the first player picks Rock and the second picks Scissors, the first player wins.
@@ -142,3 +143,15 @@
              (and (eq a 'paper) (eq b 'scissors))
              (and (eq a 'rock) (eq b 'paper))) 'second-wins)
         ((eq a b) 'tie)))
+
+;; Ex 4.22
+; Use COND to write a predicate BOILINGP that takes two inputs, TEMP and SCALE, and returns T if the temperature is above the boiling point of water on the specified scale.
+; If the scale is FAHRENHEIT, the boiling point is 212 degrees; if CELSIUS, the boiling point is 100 degrees. Also write versions using IF and AND/OR instead of COND.
+(defun boilingp (temp scale)
+  (cond ((and (eq scale 'fahrenheit) (eq temp 212)) t)
+        ((and (eq scale 'celsius) (eq temp 100)) t)))
+
+(defun boilingp (temp scale)
+  (if (and (eq scale 'fahrenheit) (eq temp 212)) t
+      (if (and (eq scale 'celsius) (eq temp 100)) t
+          nil)))
