@@ -6,3 +6,4 @@
 * Chapter 2 - **Lists**
 * Chapter 3 - **EVAL Notation**
 * Chapter 4 - **Conditionals**
+* Chapter 5 - **Variables and Side Effects**
