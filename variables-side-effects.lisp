@@ -19,3 +19,10 @@
   "Returns a random number from 1 to 6."
   (+ (random 6) 1))
 
+;;; Ex 5.6 b
+;;; Write a function THROW-DICE that throws two dice and returns a list of two numbers: the value of the first die and the value of the second. We'll call this list a "throw."
+;;; For example, (THROW-DICE) migh return the throw (3 5), indicating that the first die was a 3 and the second a 5.
+(defun throw-dice ()
+  "Throws two dice and returns the result in a list"
+  (list (throw-die) (throw-die)))
+
