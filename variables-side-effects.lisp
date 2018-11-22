@@ -33,3 +33,14 @@
 
 (defun boxcars-p (l)
    (eq (+ (car l) (cadr l)) 12))
+
+;;; Ex 5.6 d
+;;; In playing craps, the first throw of the dice is crucial. A throw of 7 or 11 is an instant win. A throw of 2, 3 or 12 is an instant loss (American casino rules).
+;;; Write predicates INSTANT-WIN-P and INSTANT-LOSS-P to detect these conditions. Each should take a throw as input.
+(defun instant-win-p (l)
+  (let ((s (+ (car l) (cadr l))))
+    (if (or (eq s 7) (eq s 11)) t))) 
+
+(defun instant-loss-p (l)
+  (let ((s (+ (car l) (cadr l))))
+    (if (or (eq s 2) (eq s 3) (eq s 12)) t))) 
