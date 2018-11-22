@@ -26,3 +26,10 @@
   "Throws two dice and returns the result in a list"
   (list (throw-die) (throw-die)))
 
+;;; Ex 5.6 c
+;;; Throwing two ones is called "snake eyes"; two sixes is called "boxcars." Write predicates SNAKE-EYES-P and BOXCARS-P that takes a throw as input and return T if the throw is equal to (1 1) or (6 6), respectively.
+(defun snake-eyes-p (l)
+   (eq (+ (car l) (cadr l)) 2))
+
+(defun boxcars-p (l)
+   (eq (+ (car l) (cadr l)) 12))
