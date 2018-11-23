@@ -44,3 +44,11 @@
 (defun instant-loss-p (l)
   (let ((s (+ (car l) (cadr l))))
     (if (or (eq s 2) (eq s 3) (eq s 12)) t))) 
+
+;;; Ex 5.6 e
+;;; Write a function SAY-THROW that takes a throw as input and returns either the sum of the two dice or the symbol SNAKE-EYES or BOXCARS if the sum is 2 or 12.
+;;; (SAY-THROW '(3 4)) should return 7. (SAY-THROW '(6 6)) should return BOXCARS.
+(defun say-throw (l)
+  (cond ((snake-eyes-p l) 'snake-eyes)
+        ((boxcars-p l) 'boxcars)
+        (t (+ (car l) (cadr l)))))
