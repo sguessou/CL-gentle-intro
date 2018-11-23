@@ -52,3 +52,25 @@
   (cond ((snake-eyes-p l) 'snake-eyes)
         ((boxcars-p l) 'boxcars)
         (t (+ (car l) (cadr l)))))
+
+;;; Ex 5.6 f
+;;; If you don't win or lose on the first throw of the dice, the value you threw becomes your "point," which will be explained shortly.
+;;; Write a function (CRAPS) that produces the following sort of behaviour. Your solution should make use of the functions you wrote in previous steps.
+;;; > (craps)
+;;; (THROW 1 AND 1 -- SNAKEYES -- YOU LOSE)
+;;; > (craps)
+;;; (THROW 3 AND 4 -- 7 -- YOU WIN)
+;;; > (craps)
+;;; (THROW 2 AND 4 -- YOUR POINT IS 6)
+(defun craps ()
+  (let ((l (list (throw-die) (throw-die))))
+    (cond ((instant-win-p l) 
+           (list 'throw (car l) 'and (cadr l) '--
+             (+ (car l) (cadr l)) 'you 'win))
+          ((instant-loss-p l)
+           (cond ((snake-eyes-p l) '(throw 1 and 1 -- snakeeyes -- you lose))
+                 ((boxcars-p l) '(throw 6 and 6 -- boxcars -- you lose))
+                 (t (list 'throw (car l) 'and (cadr l) '--
+                          (+ (car l) (cadr l)) 'you 'lose))))
+          (t (list 'throw (car l) 'and (cadr l) '--
+              'your 'point 'is (+ (car l) (cadr l)))))))

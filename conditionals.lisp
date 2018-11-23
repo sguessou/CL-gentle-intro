@@ -148,13 +148,13 @@
 ; Use COND to write a predicate BOILINGP that takes two inputs, TEMP and SCALE, and returns T if the temperature is above the boiling point of water on the specified scale.
 ; If the scale is FAHRENHEIT, the boiling point is 212 degrees; if CELSIUS, the boiling point is 100 degrees. Also write versions using IF and AND/OR instead of COND.
 (defun boilingp (temp scale)
-  (cond ((and (eq scale 'fahrenheit) (eq temp 212)) t)
-        ((and (eq scale 'celsius) (eq temp 100)) t)))
+  (cond ((or (and (eq scale 'fahrenheit) (> temp 212))
+            (and (eq scale 'celsius) (> temp 100))) t)))
 
 (defun boilingp (temp scale)
-  (if (and (eq scale 'fahrenheit) (eq temp 212)) t
-      (if (and (eq scale 'celsius) (eq temp 100)) t
-          nil)))
+  (if (or (and (eq scale 'fahrenheit) (> temp 212))
+         (and (eq scale 'celsius) (> temp 100)))
+      t))
 
 ;; Ex 4.29
 ; Write versions of LOGICAL-AND using IF and COND instead of AND.
