@@ -74,3 +74,23 @@
                           (+ (car l) (cadr l)) 'you 'lose))))
           (t (list 'throw (car l) 'and (cadr l) '--
               'your 'point 'is (+ (car l) (cadr l)))))))
+
+;;; Ex 5.6 g
+;;; Once a point has been established, you continue throwing the dice until you either win by making the point again or lose by throwing a 7.
+;;; Write the function TRY-FOR-POINT that simulates this part of the game, as follows:
+;;; > (try-for-point 6)
+;;; (THROW 3 and 5 -- 8 -- THROW AGAIN) 
+;;; > (try-for-point 6)
+;;; (THROW 5 and 1 -- 6 -- YOU WIN)
+;;; > (craps)
+;;; (THROW 3 and 6 -- 9 -- YOUR POINT IS 9)
+;;; > (try-for-point 9)
+;;; (THROW 6 and 1 -- 7 -- YOU LOSE)
+(defun try-for-point (x)
+  (let* ((l (list (throw-die) (throw-die)))
+         (s (+ (car l) (cadr l))))
+    (if (eq s x) 
+        (list 'throw (car l) 'and (cadr l) '-- s '-- 'you 'win)
+        (if (eq (random 2) 1)
+            (list 'throw (car l) 'and (cadr l) '-- s '-- 'throw 'again)
+            (list 'throw (car l) 'and (cadr l) '-- s '-- 'you 'lose))))) 
