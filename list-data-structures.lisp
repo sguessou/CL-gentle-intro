@@ -23,3 +23,11 @@
 
 (defun next-to-last (l)
   (nth (- (length l) 2) l)) 
+
+;;; Ex 6.8
+;;; Write a function MY-BUTLAST that returns a list with the last element removed.
+;;; (MY-BUTLAST '(ROSES ARE RED)) should return the list (ROSES ARE). (MY-BUTLAST '(G A G A)) should return (G A G).
+(defun my-butlast (l)
+  (reverse (rest (reverse l))))
+
+ 
