@@ -31,3 +31,9 @@
   (reverse (rest (reverse l))))
 
  
+;;; Ex 6.9
+;;; What primitive function does the following reduce to?
+(defun mystery (x)
+  (first (last (reverse x)))) 
+
+;;; answer: CAR
