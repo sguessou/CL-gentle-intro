@@ -15,3 +15,11 @@
 (defun last-element (l)
   "Returns last element of list version 3"
   (nth (- (length l) 1) l))
+
+;;; Ex 6.7
+;;; Use REVERSE to write a NEXT-TO-LAST function that returns the next-to-last element of a list. Write another version using NTH.
+(defun next-to-last (l)
+  (cadr (reverse l)))
+
+(defun next-to-last (l)
+  (nth (- (length l) 2) l)) 
