@@ -42,3 +42,8 @@
 ;;; Write a function PALINDROMEP that returns T if its input is a palindrome.
 (defun palindromep (l)
   (equal l (reverse l))) 
+
+;;; Ex 6.11
+;;; Write a function MAKE-PALINDROME that makes a palindrome out of a list, for example, given (YOU AND ME) as input it should return (YOU AND ME ME AND YOU).
+(defun make-palindrome (l)
+  (append l (reverse l)))
