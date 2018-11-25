@@ -35,5 +35,10 @@
 ;;; What primitive function does the following reduce to?
 (defun mystery (x)
   (first (last (reverse x)))) 
-
 ;;; answer: CAR
+
+;;; Ex 6.10
+;;; A palindrome is a sequence that reads the same forward and backwards. The list (A B C D C B A) is a palindrome; (A B C A B C) is not.
+;;; Write a function PALINDROMEP that returns T if its input is a palindrome.
+(defun palindromep (l)
+  (equal l (reverse l))) 
