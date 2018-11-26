@@ -65,7 +65,14 @@
              (not (member 'a sent))  
              (not (member 'an sent)))))
 
+;;; Ex 6.18
 ;;; Write a function ADD-VOWELS that takes a set of letters as input and adds the vowels (A E I O U) to the set. 
 ;;; For example, calling ADD-VOWELS on the set (X A E Z) should produce the set (X A E Z I O U), except that the exact order of the elements in the result is unimportant.
 (defun add-vowels (s)
   (union s '(a e i o u)))
+
+;;; Ex 6.21
+;;; If set x is a subset of set y, then subtracting y from x should leave the empty set.
+;;; Write MY-SUBSETP, a version of the SUBSETP predicate that returns T if its first input is a subset of its second input.
+(defun my-subsetp (a b)
+  (not (set-difference a b)))
