@@ -47,3 +47,21 @@
 ;;; Write a function MAKE-PALINDROME that makes a palindrome out of a list, for example, given (YOU AND ME) as input it should return (YOU AND ME ME AND YOU).
 (defun make-palindrome (l)
   (append l (reverse l)))
+
+;;; Ex 6.15
+;;; We can use MEMBER to write a predicate that returns a true value if a sentence contains the word "the."
+(defun contains-the-p (sent)
+  (member 'the sent))
+;;; Suppose we instead want a predicate CONTAINS-ARTICLE-P that returns a true value if a sentence contains any article, such as "the," "a," or "an." Write a version of this predicate using INTERSECTION. 
+;;; Write another version using MEMBER and OR. Could the problem be solved with AND instead or OR?
+(defun contains-article-p (sent)
+  (intersection '(the a an) sent))
+
+(defun contains-article-p (sent)
+  (or (member 'the sent) (member 'a sent) (member 'an sent)))
+
+(defun contains-article-p (sent)
+  (not (and  (not (member 'the sent)) 
+             (not (member 'a sent))  
+             (not (member 'an sent)))))
+
