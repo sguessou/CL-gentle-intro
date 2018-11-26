@@ -76,3 +76,11 @@
 ;;; Write MY-SUBSETP, a version of the SUBSETP predicate that returns T if its first input is a subset of its second input.
 (defun my-subsetp (a b)
   (not (set-difference a b)))
+
+;;; Ex 6.24
+;;; Sets are said to be equal if they contain exactly the same elements.
+;;; Order does not matter in a set, so the sets (RED BLUE GREEN) and (GREEN BLUE RED) are considered equal.
+;;; However, the EQUAL predicate does not consider them equal, because it treats them as lists, not as sets. Write a SET-EQUAL predicate that returns T if two things are equal as sets.
+;;; (Hint: If two sets are equal, then each is a subset of the other.)
+(defun set-equal (a b)
+  (and (subsetp a b) (subsetp b a))) 
