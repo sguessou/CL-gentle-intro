@@ -118,3 +118,13 @@
 ;;; COMPARE should return a list of form (n COMMON FEATURES).
 (defun compare (o)
   (cons (count-common o) '(common features)))
+
+;;; Ex 6.30
+;;; Make a table called BOOKS of five books and their authors. The first entry might be (WAR-AND-PEACE LEO-TOLSTOY)
+(setf books
+      '((2666 Roberto-Bolano)
+        (Crimes-and-Punishments Fedor-Dostoievsky)
+        (Kolyma-Tales Varlam-Shalamov)
+        (Valis Philip-K-Dick)
+        (Politics Aristotle)))
+
