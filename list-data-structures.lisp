@@ -140,3 +140,8 @@
 (defvar NERD-STATES 
   '(Sleeping Eating Waiting-for-a-computer Programming Debugging)) 
 
+;;; b. Write a function NERDUS that takes the name of a state as input and uses the data structure you designed to determine the next state the creature will be in.
+;;; (NERDUS 'SLEEPING) should return EATING, for example.
+;;; (NERDUS 'DEBUGGING) should return SLEEPING.
+(defun nerdus (s)
+  (cadr (member s nerd-states)))
