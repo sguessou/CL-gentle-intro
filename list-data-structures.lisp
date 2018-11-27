@@ -133,3 +133,10 @@
 (defun who-wrote (b)
   (cadr (assoc b *books*)))
 
+;;; Ex 6.35
+;;; In this problem we will simulate the behaviour of a very simple-minded creature, Nerdus Americanis (also known as Computerus Hackerus).
+;;; This creature has only five states: Sleeping, Eating, Waiting-for-a-Computer, Programming, and Debugging. Its behavior is cyclic: After it sleeps it always eats, after it eats it always waits for a computer, and so on, until after debugging it goes back to sleep for a while.
+;;; a. Write a data structure for the five-state cycle given above, and store it in a global variable called NERD-STATES.
+(defvar NERD-STATES 
+  '(Sleeping Eating Waiting-for-a-computer Programming Debugging)) 
+
