@@ -160,3 +160,9 @@ NIL
       'eating
       n)))
   
+;;; e. Exposing Nerdus Americanis to extreme amounts of chemical stimulants produces pathological behavior. Instead of an orderly advance to its next state, the creature advances two states. 
+;;; For example, it goes from Eating directly to Programming, and from there to Sleeping. Write a function NERD-ON-CAFFEINE that exhibits this unusual pathology. Your function should use the same table as NERDUS.
+(defun nerd-on-caffeine (s)
+  (cond ((eq s 'programming) 'sleeping)
+          ((eq s 'debugging) 'eating)
+          (t (nerdus (nerdus s))))) 
