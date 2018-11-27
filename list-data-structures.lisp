@@ -121,10 +121,15 @@
 
 ;;; Ex 6.30
 ;;; Make a table called BOOKS of five books and their authors. The first entry might be (WAR-AND-PEACE LEO-TOLSTOY)
-(setf books
+(defvar *books*
       '((2666 Roberto-Bolano)
         (Crimes-and-Punishments Fedor-Dostoievsky)
         (Kolyma-Tales Varlam-Shalamov)
         (Valis Philip-K-Dick)
         (Politics Aristotle)))
+
+;;; Ex 6.31
+;;; Write the function WHO-WROTE that takes the name of a book as input and returns the book's author.
+(defun who-wrote (b)
+  (cadr (assoc b *books*)))
 
