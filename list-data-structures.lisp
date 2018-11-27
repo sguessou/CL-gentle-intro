@@ -144,4 +144,19 @@
 ;;; (NERDUS 'SLEEPING) should return EATING, for example.
 ;;; (NERDUS 'DEBUGGING) should return SLEEPING.
 (defun nerdus (s)
-  (cadr (member s nerd-states)))
+  (if (eq s 'debugging) 
+      'sleeping
+      (cadr (member s nerd-states))))
+
+;;; c. What is the result of (NERDUS 'PLAYING-GUITAR)?
+NIL
+
+;;; d. When Nerdus Americanis ingests too many stimulants (caffeine overdose), it stops sleeping. After finishing Debugging, it immediately goes on to state Eating.
+;;; Write a function SLEEPLESS-NERD that works just like NERDUS except it never sleeps.
+;;; Your function should refer to the global variable NERD-STATES, as NERDUS does.
+(defun sleepless-nerd (s)
+  (let ((n (nerdus s)))
+    (if (eq n 'sleeping)
+      'eating
+      n)))
+  
