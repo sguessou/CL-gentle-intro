@@ -169,8 +169,18 @@ NIL
 
 ;;; Ex 6.36
 ;;; Write a function to swap the first and last element of any list. (SWAP-FIRST-LAST '(YOU CANT BUY LOVE)) should return (LOVE CANT BUY YOU).
-(defun swap-first-last (s)
-  (let* ((f (car s)))
-    (let ((l (car (reverse s))))
-      (let ((m (reverse (rest (member l (reverse (rest (member f s))))))))
-        (append (list l) m (list f))))))
+(defun swap-first-last (x)
+  (let* ((f (reverse (rest x)))
+         (l (reverse (rest f))))
+    (cons (first f) (append l (list (first x))))))
+
+;;; Ex 6.37
+;;; ROTATE-LEFT and ROTATE-RIGHT are functions that rotate the elements of a list.
+;;; (ROTATE-LEFT '(A B C D E)) returns (B C D E A), whereas ROTATE-RIGHT returns (E A B C D). Write these functions.
+(defun rotate-left (x)
+  (append (rest x) (list (first x))))
+
+(defun rotate-right (x)
+  (let* ((l (first (reverse x)))
+        (r (rest (reverse x))))
+    (append (list l) (reverse r))))
