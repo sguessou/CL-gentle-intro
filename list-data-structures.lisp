@@ -166,3 +166,11 @@ NIL
   (cond ((eq s 'programming) 'sleeping)
           ((eq s 'debugging) 'eating)
           (t (nerdus (nerdus s))))) 
+
+;;; Ex 6.36
+;;; Write a function to swap the first and last element of any list. (SWAP-FIRST-LAST '(YOU CANT BUY LOVE)) should return (LOVE CANT BUY YOU).
+(defun swap-first-last (s)
+  (let* ((f (car s)))
+    (let ((l (car (reverse s))))
+      (let ((m (reverse (rest (member l (reverse (rest (member f s))))))))
+        (append (list l) m (list f))))))
