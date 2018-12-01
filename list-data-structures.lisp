@@ -184,3 +184,23 @@ NIL
   (let* ((l (first (reverse x)))
         (r (rest (reverse x))))
     (append (list l) (reverse r))))
+
+;;; Ex 6.41
+;;; Table rooms containing layout of the house
+(defvar rooms 
+  '((library (east upstairs-bedroom) (south back-stairs))
+    (back-stairs (north library) (south downstairs-bedroom))
+    (downstairs-bedroom (north back-stairs) (east dinin-room))
+    (upstairs-bedroom (west library) (south front-stairs))
+    (front-stairs (north upstairs-bedroom) (south living-room))
+    (living-room (north front-stairs) (east kitchen) (south dining-room))
+    (dining-room (north living-room) (west downstairs-bedroom) (east pantry))
+    (kitchen (west living-room) (south pantry))
+    (pantry (north kitchen) (west dining-room))))
+
+;;; a.
+;;; Write a function CHOICES that take the name of a room as input and returns the table of permissible directions Robbie the Robot may take from that room.
+;;; For example (CHOICES 'PANTRY) should return the list ((NORTH KITCHEN) (WEST DINING-ROOM)).
+;;; Test your function to make sure it returns the correct result. 
+(defun choices (n)
+  (rest (assoc n rooms)))
