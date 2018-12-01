@@ -223,3 +223,15 @@ NIL
 ;;; Write a function HOW-MANY-CHOICES that tells how many choices Robbie has for where to move to next. Your function should refer to the global variable LOC to find his current location. If he is in the pantry, (HOW-MANY-CHOICES) should return 2.
 (defun how-many-choices ()
   (length (choices loc)))
+
+;;; e.
+;;; Write a predicate UPSTAIRSP that returns T if its input is an upstairs location. (The library and the upstairs bedroom are the only two locations upstairs.) 
+;;; Write a predicate ONSTAIRSP that returns T if its input is either FRONT-STAIRS or BACK-STAIRS.
+(defun upstairsp (l)
+  (not (not (member l '(library upstairs-bedroom)))))
+
+(defun onstairsp (l)
+  (or (equal l 'front-stairs)
+      (equal l 'back-stairs)))
+
+
