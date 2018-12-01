@@ -243,3 +243,15 @@ NIL
               (not (onstairsp loc))) 
          (append '(robbie is downstairs in the) (list loc)))
         ((onstairsp loc) (append '(robbie is on the) (list loc)))))
+
+;;; g.
+;;; Write a function MOVE that takes one input, a direction, and moves Robbie in that direction. MOVE should make use of the LOOK function you wrote previously, and should call SET-ROBBIE-LOCATION to move him.
+;;; If Robbie can't move in the specified direction an appropriate message should be returned.
+;;; For example, if Robbie is in the pantry, (MOVE 'SOUTH) should return something like (OUCH! ROBBIE HIT A WALL). (MOVE 'NORTH) should change Robbie's location and return (ROBBIE IS DOWNSTAIRS IN THE KITCHEN).
+(defun move (d)
+  (let ((l (look d loc)))
+    (cond  ((not (not l)) 
+            (set-robbie-location (car l))
+            (where))
+           (t '(ouch! robbie hit a wall)))))
+
