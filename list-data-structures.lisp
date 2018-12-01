@@ -255,3 +255,17 @@ NIL
             (where))
            (t '(ouch! robbie hit a wall)))))
 
+;;; h.
+;;; Starting from the pantry, take Robbie to the library via the back stairs. Then take him to the kitchen, but do not lead him through the downstairs bedroom on the way.
+(set-robbie-location 'pantry)
+(move 'west)
+(move 'west)
+(move 'north)
+(move 'north)
+;;; In the library.
+;;; Heading to the kitchen.
+(move 'east)
+(move 'south)
+(move 'south)
+(move 'east)
+;;; In the kitchen.
