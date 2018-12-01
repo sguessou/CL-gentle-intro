@@ -234,4 +234,12 @@ NIL
   (or (equal l 'front-stairs)
       (equal l 'back-stairs)))
 
-
+;;; f.
+;;; Where's Robbie? Write a function of no inputs called WHERE that tells where Robbie is. If he is in the library, (WHERE) should say (ROBBIE IS UPSTAIRS IN THE LIBRARY). If he is in the kitchen, it should say (ROBBIE IS DOWNSTAIRS IN THE KITCHEN).
+;;; If he is on the front stairs, it should say (ROBBIE IS ON THE FRONT-STAIRS).
+(defun where ()
+  (cond ((upstairsp loc) (append '(robbie is upstairs in the) (list loc)))
+        ((and (not (upstairsp loc)) 
+              (not (onstairsp loc))) 
+         (append '(robbie is downstairs in the) (list loc)))
+        ((onstairsp loc) (append '(robbie is on the) (list loc)))))
