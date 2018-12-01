@@ -204,3 +204,9 @@ NIL
 ;;; Test your function to make sure it returns the correct result. 
 (defun choices (n)
   (rest (assoc n rooms)))
+
+;;; b.
+;;; Write a function LOOK that takes two inputs, a direction and a room, and tells where Robbie would end up if he moved in that direction from that room. For example, (LOOK 'NORTH 'PANTRY) should return KITCHEN.
+;;; (LOOK 'SOUTH 'PANTRY) should return NIL. Hint: The CHOICES function will be a useful building block.
+(defun look (d r)
+  (rest (assoc d (choices r))))
