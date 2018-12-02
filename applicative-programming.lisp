@@ -26,3 +26,12 @@ let the global variable DAILY-PLANET contain the following table:
 ;;; Write an expression to apply the ZEROP predicate to each element of the list (2 0 3 4 0 -5 -6).
 ;;; The answer you get should be a list of Ts and NILs.
 (mapcar #'zerop '(2 0 3 4 0 -5 -6))
+
+;;; Suppose we want to solve a problem similar to the preceding one, but instead of testing wheter an element is zero, we want to test whether it is greater than five.
+;;; We can't use > directly for this because > is a function of two inputs; MAPCAR  will only give it one input.
+;;; Show how first writing a one-input function called GREATER-THAN-FIVE-P would help.
+(defun greater-than-five-p (n)
+  (> n 5))
+
+(mapcar #'greater-than-five-p '(2 0 3 4 0 -5 -6))
+
