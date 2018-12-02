@@ -8,3 +8,4 @@
 * Chapter 4 - **Conditionals**
 * Chapter 5 - **Variables and Side Effects**
 * Chapter 6 - **List Data Structures**
+* Chapter 7 - **Applicative Programming**
