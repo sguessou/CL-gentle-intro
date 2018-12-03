@@ -60,4 +60,12 @@ let the global variable DAILY-PLANET contain the following table:
                (and (>= e (- k 10)) (<= 2 (+ k 10))))
            x))
 
+;;; Ex 7.9
+;;; Write a function FIND-NESTED that returns the first element of a list that is itself a non-NIL list.
+(defun find-nested (l)
+  (find-if #'(lambda (e)
+                  (and (listp e) (> (length e) 0)))
+              l))
 
+(defun find-nested (l)
+  (find-if #'consp l))
