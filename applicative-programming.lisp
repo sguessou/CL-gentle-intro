@@ -35,3 +35,9 @@ let the global variable DAILY-PLANET contain the following table:
 
 (mapcar #'greater-than-five-p '(2 0 3 4 0 -5 -6))
 
+;;; Ex 7.5
+;;; Write a lambda expression to subtract seven from a number
+#'(lambda (n) (- n 7))
+
+
+
