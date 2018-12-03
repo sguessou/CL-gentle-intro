@@ -43,5 +43,12 @@ let the global variable DAILY-PLANET contain the following table:
 ;;; Write a lambda expression that returns T if its input is T or NIL, but NIL for any other input.
 #'(lambda (i) (cond (or (eq t i) (eq nil i)) t))
 
-
+;;; Ex 7.7
+;;; Write a function that takes a list such as (UP DOWN UP UP) and "flips" each element, returning (DOWN UP DOWN DOWN). 
+;;; Your function should include a lambda expression that knows how to flip an individual element, plus an applicative operator to do this to every element of the list.
+(defun flip (l)
+  (mapcar #'(lambda (e) 
+              (if (eq e 'up) 
+                  'down
+                  'up)) l))
 
