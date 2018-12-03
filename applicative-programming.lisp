@@ -39,5 +39,9 @@ let the global variable DAILY-PLANET contain the following table:
 ;;; Write a lambda expression to subtract seven from a number
 #'(lambda (n) (- n 7))
 
+;;; Ex 7.6
+;;; Write a lambda expression that returns T if its input is T or NIL, but NIL for any other input.
+#'(lambda (i) (cond (or (eq t i) (eq nil i)) t))
+
 
 
