@@ -106,3 +106,10 @@ F       = 6         B       = 12
   (mapcar #'(lambda (x)
               (car x))
           (mapcar #'table-searching l)))
+
+;;; To transpose a piece of music up by n half steps, we begin by adding the value n to each note in the piece. Write a function called RAISE that takes a number n and a list of numbers as input and raises each number in the list by the value n.
+;;; (RAISE 5 '(5 3 1 3 5 5 5)) should return (10 8 6 8 10 10 10), whis is "Mary had a little lamb" transposed five half steps from the key of C to the key of F.
+(defun raise (n l)
+  (mapcar #'(lambda (x)
+              (+ x n))
+          l))
