@@ -69,3 +69,27 @@ let the global variable DAILY-PLANET contain the following table:
 
 (defun find-nested (l)
   (find-if #'consp l))
+
+;;; Ex 7.10
+;;; In this exercise we will write a program to transpose a song from one key to another. In order to manipulate notes more efficiently, we will translate them into numbers.
+;;; Here is the correspondence between notes and numbers for a non-octave scale:
+C       = 1         F-SHARP = 7
+C-SHARP = 2         G       = 8
+D       = 3         G-SHARP = 9
+D-SHARP = 4         A       = 10
+E       = 5         A-SHARP = 11
+F       = 6         B       = 12
+;;; a.
+;;; Write a table to represent this information. Store it in a global variable called NOTE-TABLE.
+(setf note-table 
+      '((c 1) (c-sharp 2) (d 3) (d-sharp 4) (e 5) (f 6)
+        (f-sharp 7) (g 8) (g-sharp 9) (a 10) (a-sharp 11)
+        (b 12)))
+    
+;;; b.
+;;; Write a function called NUMBERS that takes a list of notes as input and returns the corresponding list of numbers. (NUMBERS '(E D C D E E E)) should return (5 3 1 3 5 5 5).
+;;; This list represents the first seven notes of "Mary Had a Little Lamb."
+(defun numbers (l)
+  (mapcar #'(lambda (x)
+              (cadr (assoc x note-table)))
+          l))
