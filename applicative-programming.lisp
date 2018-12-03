@@ -93,3 +93,16 @@ F       = 6         B       = 12
   (mapcar #'(lambda (x)
               (cadr (assoc x note-table)))
           l))
+
+;;; c.
+;;; Write a function called NOTES that takes a list of numbers as input and returns the corresponding list of notes. (NOTES '(5 3 1 3 5 5 5)) should return (E D C D E E E). Hint: Since NOTE-TABLE is keyed by note, ASSOC can't look up numbers in it;
+;;; neither can RASSOC, since the elements are lists, not dotted pairs. Write you own table-searching function to search NOTE-TABLE by number instead of by note.
+(defun table-searching (x)
+  (find-if #'(lambda (e)
+              (eq (car (reverse e)) x))
+           note-table))
+
+(defun notes (l)
+  (mapcar #'(lambda (x)
+              (car x))
+          (mapcar #'table-searching l)))
