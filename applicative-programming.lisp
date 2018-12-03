@@ -52,3 +52,12 @@ let the global variable DAILY-PLANET contain the following table:
                   'down
                   'up)) l))
 
+;;; Ex 7.8
+;;; Write a function that takes two inputs, X and K, and returns the first number in the list X that is roughly equal to K.
+;;; Let's say that "roughly equal" means no less than K-10 and no more than K+10.
+(defun ex-7.8 (x k)
+  (find-if #'(lambda (e)
+               (and (>= e (- k 10)) (<= 2 (+ k 10))))
+           x))
+
+
