@@ -125,3 +125,11 @@ F       = 6         B       = 12
                     ((< x 1) (+ x 12))
                     (t x)))
           l))
+
+;;; g.
+;;; Write a function TRANSPOSE that takes a number n and a song as input, and returns the song transposed by n half steps.
+;;; (TRANSPOSES 5 '(E D C D E E E)) should return (A G F G A A A). Your solution should assume the availability of the NUMBERS, NOTES, RAISE and NORMALIZE functions. Try transposing "Mary Had a Little Lamb" up by 11 half steps. What happens if you transpose it by 12 half steps? How about -1 half steps?
+(defun transpose (n l)
+  (notes 
+   (normalize 
+    (raise n (numbers l)))))
