@@ -205,3 +205,9 @@ F       = 6         B       = 12
 (defun color-of  (c)
   (cadr (assoc (suite c) colors)))
 
+;;; d.
+;;; Write a function FIRST-RED that returns the first card of a hand that is of a red suit, or NIL if none are.
+(defun first-red (h)
+  (find-if #'(lambda (c)
+                  (eq (color-of c) 'red))
+              h))
