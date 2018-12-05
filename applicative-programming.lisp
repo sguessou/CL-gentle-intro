@@ -194,3 +194,14 @@ F       = 6         B       = 12
   (length (remove-if-not #'(lambda (x)
                       (eq (suite x) s))
                          h)))
+
+;;; c.
+;;; Set the global variable COLORS to the following table:
+((clubs black) (diamonds red) (hearts red) (spades black))
+;;; Now write a function COLOR-OF that uses the table COLORS to retrieve the color of a card. (COLOR-OF '(2 CLUBS)) should return BLACK. (COLOR-OF '(6 HEARTS)) should return RED.
+(setf colors '((clubs black) (diamonds red) (hearts red) (spades black)))
+
+;;; Now write a function COLOR-OF that uses the table COLORS to retrieve the color of a card. (COLOR-OF '(2 CLUBS)) should return BLACK. 
+(defun color-of  (c)
+  (cadr (assoc (suite c) colors)))
+
