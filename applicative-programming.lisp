@@ -211,3 +211,20 @@ F       = 6         B       = 12
   (find-if #'(lambda (c)
                   (eq (color-of c) 'red))
               h))
+
+;;; e.
+;;; Write a function BLACK-CARDS that returns a list of all the black cards in a hand.
+(defun black-cards (h)
+  (remove-if-not #'(lambda (c)
+                     (eq (color-of c) 'black))
+                 h))
+
+;;; f
+;;; Write a function WHAT-RANKS that takes two inputs, a suit and a hand, and return the ranks of all cards belonging to that suit. 
+;;; (WHAT-RANKS 'DIAMONDS MY-HAND) should return the list (2 4).
+;;; (WHAT-RANKS 'SPADES MY-HAND) should return the list (ACE).
+;;; Hint: First extract all the cards of the specified suit, then use another operator to get the ranks of those cards.
+(defun what-ranks (s h)
+  (mapcar #'(lambda (c) (rank c))
+             (remove-if-not #'(lambda (c) (eq (suite c) s))
+                            h)))
