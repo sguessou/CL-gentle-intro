@@ -133,3 +133,11 @@ F       = 6         B       = 12
   (notes 
    (normalize 
     (raise n (numbers l)))))
+
+;;; Ex 7.11
+;;; Write a function to pick out those numbers in a list that are greater than one and less than five.
+(defun ex-711 (l)
+  (remove-if-not #'(lambda (x)
+                     (and (> x 1) (< x 5)))
+                 l))
+
