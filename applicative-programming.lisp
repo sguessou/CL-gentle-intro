@@ -154,3 +154,21 @@ F       = 6         B       = 12
   (remove-if-not #'(lambda (x)
                      (eq (length x) 2))
                  l))
+
+;;; Ex 7.14
+;;; Here is a version of SET-DIFFERENCE written with REMOVE-IF:
+(defun my-setdiff (x y)
+  (remove-if #'(lambda (e)
+                 (member e y))
+             x))
+;;; Show how the INTERSECTION and UNION functions can be written using REMOVE-IF or REMOVE-IF-NOT.
+(defun my-intersection (x y)
+  (remove-if-not #'(lambda (e)
+                     (member e y))
+                 x))
+
+(defun my-union (x y)
+  (append y 
+          (remove-if #'(lambda (e)
+                 (and (member e x) (member e y)))
+             x)))
