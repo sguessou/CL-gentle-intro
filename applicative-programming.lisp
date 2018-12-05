@@ -147,3 +147,10 @@ F       = 6         B       = 12
   (length (remove-if-not #'(lambda (x)
                              (eq x 'the))
                          l)))
+
+;;; Ex 7.13
+;;; Write a function that picks from a list of lists those of exactly length two.
+(defun ex-713 (l)
+  (remove-if-not #'(lambda (x)
+                     (eq (length x) 2))
+                 l))
