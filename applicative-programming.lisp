@@ -172,3 +172,15 @@ F       = 6         B       = 12
           (remove-if #'(lambda (e)
                  (and (member e x) (member e y)))
              x)))
+
+;;; Ex 7.15
+;;; In this exercise we will manipulate cards with applicative operators. A card will be represented by a list of form (rank suit), for example, (ACE SPADES) or (2 CLUBS). A hand will be represented by a list of cards.
+
+;;; a.
+;;; Write the functions RANK and SUIT that return the rank and suit of a card, respectively. (RANK '(2 CLUBS)) should return 2, and (SUIT '(2 CLUBS)) should return CLUBS.
+(defun rank (l)
+  (car l))
+
+(defun suite (l)
+  (cadr l))
+
