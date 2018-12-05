@@ -184,3 +184,13 @@ F       = 6         B       = 12
 (defun suite (l)
   (cadr l))
 
+;;; b.
+;;; Set the global variable MY-HAND to the following hand of cards:
+((3 hearts) (5 clubs) (2 diamonds) (4 diamonds) (ace spades))
+;;; Now write a function COUNT-SUIT that takes two inputs, a suit and a hand of cards, and returns the number of cards belonging to that suit. (COUNT-SUIT 'DIAMONDS MY-HAND) should return 2.
+(setf my-hand '((3 hearts) (5 clubs) (2 diamonds) (4 diamonds) (ace spades))) 
+
+(defun count-suit (s h)
+  (length (remove-if-not #'(lambda (x)
+                      (eq (suite x) s))
+                         h)))
