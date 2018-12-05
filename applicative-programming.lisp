@@ -141,3 +141,9 @@ F       = 6         B       = 12
                      (and (> x 1) (< x 5)))
                  l))
 
+;;; Ex 7.12
+;;; Write a function that counts how many times the word "the" appears in a sentence.
+(defun ex-712 (l)
+  (length (remove-if-not #'(lambda (x)
+                             (eq x 'the))
+                         l)))
