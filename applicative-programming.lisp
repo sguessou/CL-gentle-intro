@@ -228,3 +228,21 @@ F       = 6         B       = 12
   (mapcar #'(lambda (c) (rank c))
              (remove-if-not #'(lambda (c) (eq (suite c) s))
                             h)))
+
+;;; Set the global variable ALL-RANKS to the list 
+(2 3 4 5 6 7 8 9 10 jack queen king ace)
+;;; Then write a predicate HIGHER-RANK-P that takes two cards as input and returns true if the first card has a higher rank than the second.
+;;; Hint: look at the BEFOREP predicate on page 171 of Chapter 6.
+(setf all-ranks '(2 3 4 5 6 7 8 9 10 jack queen king ace))
+
+(defun beforep (x y l)
+  "Returns true if X appears before Y in L"
+  (member y (member x l)))
+
+(defun bang (e)
+  "Retuns boolean value of e"
+  (not (not e)))
+
+(defun higher-rank-p (c1 c2)
+   (bang 
+    (beforep (rank c2) (rank c1) all-ranks)))
