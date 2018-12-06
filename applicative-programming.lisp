@@ -264,3 +264,11 @@ F       = 6         B       = 12
 ;;; Suppose we had a list of sets ((A B C) (C D A) (F B D) (G)) that we wanted to collapse into one big set. If we use APPEND for our reducing function, the result won't be a true set, because some elements will appear more than once.
 ;;; What reducing function should be used instead?
 (reduce #'union '((A B C) (C D A) (F B D) (G)))
+
+;;; 7.17
+;;; Write a function that, given a list of lists, returns the total length of all the lists. This problem can be solved two different ways.
+(defun my-length (l)
+  (reduce #'+ (mapcar #'(lambda (x)
+                          (length x))
+                      l)))
+
