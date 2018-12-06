@@ -272,3 +272,14 @@ F       = 6         B       = 12
                           (length x))
                       l)))
 
+;;; 7.19
+;;; Write a function ALL-ODD that returns T if every element of a list of numbers is odd.
+(defun all-odd (l)
+  (every #'oddp l))
+
+;;; 7.20
+;;; Write a function NONE-ODD that returns T if every element of a list of numbers is not odd.
+(defun none-odd (l)
+  (every #'evenp l))
+
+
