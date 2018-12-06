@@ -282,4 +282,9 @@ F       = 6         B       = 12
 (defun none-odd (l)
   (every #'evenp l))
 
-
+;;; 7.21
+;;; Write a function NOT-ALL-ODD that returns T if not every element of a list of numbers is odd.
+(defun not-all-odd (l)
+  (if (all-odd l)
+      nil
+      t))
