@@ -219,7 +219,7 @@ F       = 6         B       = 12
                      (eq (color-of c) 'black))
                  h))
 
-;;; f
+;;; f.
 ;;; Write a function WHAT-RANKS that takes two inputs, a suit and a hand, and return the ranks of all cards belonging to that suit. 
 ;;; (WHAT-RANKS 'DIAMONDS MY-HAND) should return the list (2 4).
 ;;; (WHAT-RANKS 'SPADES MY-HAND) should return the list (ACE).
@@ -288,3 +288,17 @@ F       = 6         B       = 12
   (if (all-odd l)
       nil
       t))
+
+(defun not-all-odd (l)
+  (find-if #'evenp l))
+
+;;; 7.22
+;;; Write a function NOT-NONE-ODD that returns T if it is not the case that a list of numbers contains no odd elements.
+(defun not-none-odd (l)
+  (if (none-odd l) 
+      nil
+      t))
+
+(defun not-none-odd (l)
+  (find-if #'oddp l))
+
