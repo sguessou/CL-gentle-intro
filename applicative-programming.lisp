@@ -9,7 +9,7 @@
 (mapcar #'add1 '(1 3 5 7 9))
 
 ;;; Ex 7.2
-let the global variable DAILY-PLANET contain the following table:
+;;; let the global variable DAILY-PLANET contain the following table:
 ((olsen jimmy 123-76-4535 cub-reporter)
  (kent  clark 089-52-6787 reporter)
  (lane  lois  951-26-1438 reporter)
@@ -385,3 +385,14 @@ F       = 6         B       = 12
   (reduce #'(lambda (x y)
               (append x y))
           (desc2 (desc1 b))))
+
+;;; 7.30
+;;; Recall the English-French dictionary we stored in the global variable WORDS earlier in the chapter. Given this dictionary plus the list or corresponding Spanish words (UNO DOS TRES QUATRO CINCO).
+;;; Write an expression to return a trilingual dictionary. The first entry of the dictionary should be (ONE UN UNO).
+(setf words
+      '((one un) (two deux) (three trois) (four quatre) (five cinq)))
+
+(mapcar #'(lambda (x y) (append x (list y)))
+        words '(uno dos tres quatro cinco))
+
+
