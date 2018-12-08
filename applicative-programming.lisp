@@ -317,3 +317,10 @@ F       = 6         B       = 12
 ;;; Thus (MATCH-ELEMENT 'RED 'RED) and (MATCH-ELEMENT 'RED '?) should return T, but (MATCH-ELEMENT 'RED 'BLUE) should return NIL. Make sure your function works correctly before proceeding further. 
 (defun match-element (s1 s2)
   (or (eq s1 s2) (eq s2 '?)))
+
+;;; b.
+;;; Write a function MATCH-TRIPLE that takes an assertion and a pattern as input, and returns T if the assertion matches the pattern.
+;;; Both inputs will be three-element lists. (MATCH-TRIPlE '(B2 COLOR RED) '(B2 COLOR ?)) should return T. (MATCH-TRIPlE '(B2 COLOR RED) '(B2 COLOR GREEN)) should return NIL.
+(defun match-triple (a p)
+  (match-element (third a) (third p)))  
+
