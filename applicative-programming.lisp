@@ -339,3 +339,18 @@ F       = 6         B       = 12
 (fetch '(b2 ? b3))
 (fetch '(? color ?))
 (fetch '(b4 ? ?))
+
+;;; e.
+;;; Write a function that takes a block name as input and returns a pattern asking the color of the block. For example, given the input B3, your function should return the list (B3 COLOR ?).
+(defun ask-color (b)
+  (cons b '(color ?)))
+
+;;; f.
+;;; Write a funtion SUPPORTERS that takes one input, a block, and returns a list of the blocks that support it. (SUPPORTERS 'B1) should return the list (B2 B3).
+;;; The function should work by constructing a pattern containing the block's name, using that pattern as input to FETCH, and then extracting the block names from the resulting list of assertions.
+(defun supporters (b)
+  (mapcar #'(lambda (x)
+              (car x))
+          (fetch (append '(? supports) (list b)))))
+
+
