@@ -331,3 +331,11 @@ F       = 6         B       = 12
   (remove-if-not #'(lambda (x)
               (subsetp (remove '? p) x))
                  database))
+
+;;; d.
+;;; Use FETCH with patterns you construct yourself to answer the following questions. What shape is block B4? Which blocks are bricks? What relation is block B2 to block B3? List the color of every block. What facts are known about block B4?
+(fetch '(b4 shape ?))
+(fetch '(? shape brick))
+(fetch '(b2 ? b3))
+(fetch '(? color ?))
+(fetch '(b4 ? ?))
