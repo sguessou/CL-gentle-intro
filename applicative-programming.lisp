@@ -354,3 +354,11 @@ F       = 6         B       = 12
           (fetch (append '(? supports) (list b)))))
 
 
+;;; g.
+;;; Write a predicate SUPP-CUBE that takes a block as input and returns true if that block is supported by a cube. (SUPP-CUBE 'B4) should return a true value;
+;;; (SUPP-CUBE 'B1) should not because B1 is supported by bricks but not cubes.
+(defun supp-cube (b)
+  (eq (third
+       (car
+        (fetch (cons (car (supporters b)) '( shape ?))))) 
+      'cube))
