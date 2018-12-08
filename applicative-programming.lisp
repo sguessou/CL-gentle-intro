@@ -310,7 +310,7 @@ F       = 6         B       = 12
         (b3 shape brick) (b3 color red) (b3 size small) (b3 supports b1) (b1 right-of b2)
         (b4 shape pyramid) (b4 color blue) (b4 size large) (b4 supported-by b5) 
         (b5 shape cube) (b5 color green) (b5 size large) (b5 supports b4) 
-        (b6 shape brick) (b6 color purple) (b6 size large )))
+        (b6 shape brick) (b6 color purple) (b6 size large)))
 
 ;;; a.
 ;;; Write a function MATCH-ELEMENT that takes two symbols as input. If the two are equal, or if the second is a question mark, MATCH-ELEMENT should return T.
@@ -324,3 +324,10 @@ F       = 6         B       = 12
 (defun match-triple (a p)
   (match-element (third a) (third p)))  
 
+;;; c.
+;;; Write the function FETCH that takes a pattern as input and returns all assertions in the database that match the pattern. Remember that DATABASE is a global variable.
+;;; (FETCH '(B2 COLOR ?)) should return ((B2 COLOR RED)), and (FETCH '(? SUPPORTS B1)) should return ((B2 SUPPORTS B1) (B3 SUPPORTS B1)).
+(defun fetch (p)
+  (remove-if-not #'(lambda (x)
+              (subsetp (remove '? p) x))
+                 database))
