@@ -302,3 +302,18 @@ F       = 6         B       = 12
 (defun not-none-odd (l)
   (find-if #'oddp l))
 
+;;; Ex 7.29
+;;; Create a global variable DATABASE
+(setf database
+      '((b1 shape brick) (b1 color green) (b1 size small) (b1 supported-by b2) (b1 supported-by b3)
+        (b2 shape brick) (b2 color red) (b2 size small) (b2 supports b1) (b2 left-of b3)
+        (b3 shape brick) (b3 color red) (b3 size small) (b3 supports b1) (b1 right-of b2)
+        (b4 shape pyramid) (b4 color blue) (b4 size large) (b4 supported-by b5) 
+        (b5 shape cube) (b5 color green) (b5 size large) (b5 supports b4) 
+        (b6 shape brick) (b6 color purple) (b6 size large )))
+
+;;; a.
+;;; Write a function MATCH-ELEMENT that takes two symbols as input. If the two are equal, or if the second is a question mark, MATCH-ELEMENT should return T.
+;;; Thus (MATCH-ELEMENT 'RED 'RED) and (MATCH-ELEMENT 'RED '?) should return T, but (MATCH-ELEMENT 'RED 'BLUE) should return NIL. Make sure your function works correctly before proceeding further. 
+(defun match-element (s1 s2)
+  (or (eq s1 s2) (eq s2 '?)))
