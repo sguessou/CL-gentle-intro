@@ -362,3 +362,26 @@ F       = 6         B       = 12
        (car
         (fetch (cons (car (supporters b)) '( shape ?))))) 
       'cube))
+
+;;; h.
+;;; We are going to write a DESCRIPTION function that returns the description of a block. (DESCRIPTION 'B2) will return (SHAPE BRICK COLOR RED SIZE SMALL SUPPORTS B1 LEFT-OF B3).
+;;; We will do this in steps. First, write a function DESC1 that takes a block as input and returns all assertions dealing with that block.
+;;; (DESC1 'B6) should return ((B6 SHAPE BRICK) (B6 COLOR PURPLE) (B6 SIZE LARGE)).
+(defun desc1 (b)
+  (fetch (list b '? '?)))
+
+;;; i.
+;;; Write a function DESC2 of one input that calls DESC1 and strips the block name off each element of the result. 
+;;; (DESC2 'B6) should return the list ((SHAPE BRICK) (COLOR PURPLE) (SIZE LARGE)).
+(defun desc2 (l)
+  (mapcar #'(lambda (x)
+              (rest x))
+          l))
+
+;;; j.
+;;; Write the DESCRIPTION function. It should take one input, call DESC2, and merge the resulting list of lists into a single list.
+;;; (DESCRIPTION 'B6) should return (SHAPE BRICK COLOR PURPLE SIZE LARGE).
+(defun description (b)
+  (reduce #'(lambda (x y)
+              (append x y))
+          (desc2 (desc1 b))))
