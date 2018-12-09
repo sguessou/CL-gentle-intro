@@ -34,3 +34,9 @@
 (defun add-up (l)
   (cond ((null l) 0)
         (t (+ (first l) (add-up (rest l))))))
+
+;;; Ex 8.6
+;;; Write ALLODDP, a recursive function that returns T if all the numbers in a list are odd.
+(defun alloddp (l)
+  (cond ((or (null l)) t)
+        (t (and (oddp (first l)) (alloddp (rest l))))))
