@@ -40,3 +40,11 @@
 (defun alloddp (l)
   (cond ((or (null l)) t)
         (t (and (oddp (first l)) (alloddp (rest l))))))
+
+;;; Ex 8.7
+;;; Write a recursive version of MEMBER. Call it REC-MEMBER so you don't redefine the built-in MEMBER function.
+(defun rec-member (n l)
+  (cond ((null l) nil)
+        (t (if (eq n (first l))
+            (append l (rec-member n nil))
+            (rec-member n (rest l))))))
