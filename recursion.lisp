@@ -56,3 +56,12 @@
         (t (if (eq n (caar l))
                (append (car l) (rec-assoc n nil))
                (rec-assoc n (rest l))))))
+
+;;; Ex 8.9
+;;; Write a recursive function of NTH. Call it REC-NTH.
+(defun rec-nth (n l)
+  (cond ((or (null l) (< n 0)) nil)
+        (t (if (zerop n)
+               (first l)
+               (rec-nth (- n 1) (rest l))))))
+
