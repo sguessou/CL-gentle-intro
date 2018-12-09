@@ -48,3 +48,11 @@
         (t (if (eq n (first l))
             (append l (rec-member n nil))
             (rec-member n (rest l))))))
+
+;;; Ex 8.8
+;;; Write a recursive version of ASSOC. Call it REC-ASSOC.
+(defun rec-assoc (n l)
+  (cond ((null l) nil)
+        (t (if (eq n (caar l))
+               (append (car l) (rec-assoc n nil))
+               (rec-assoc n (rest l))))))
