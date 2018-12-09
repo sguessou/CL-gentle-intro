@@ -78,3 +78,11 @@
   (cond ((zerop y) x)
         (t (rec-plus (add1 x) (subb1 y)))))
 
+;;; Ex 8.11
+;;; The missing part of Martin's Fibonacci algorithm is the rule for Fib(1) and Fib(o). both of these are defined to be 1.
+;;; Using this information, write a correct version of the FIB function. (FIB 4) should return five. (FIB 5) should return eight.
+(defun fib (n)
+  (if (or (zerop n) (eq n 1)) 
+      1
+      (+ (fib (- n 1)) (fib (- n 2))))) 
+
