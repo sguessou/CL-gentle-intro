@@ -79,10 +79,21 @@
         (t (rec-plus (add1 x) (subb1 y)))))
 
 ;;; Ex 8.11
-;;; The missing part of Martin's Fibonacci algorithm is the rule for Fib(1) and Fib(o). both of these are defined to be 1.
+;;; The missing part of Martin's Fibonacci algorithm is the rule for Fib(1) and Fib(0). both of these are defined to be 1.
 ;;; Using this information, write a correct version of the FIB function. (FIB 4) should return five. (FIB 5) should return eight.
 (defun fib (n)
   (if (or (zerop n) (eq n 1)) 
       1
       (+ (fib (- n 1)) (fib (- n 2))))) 
 
+;;; Ex 8.17
+;;; Use double-test tail recursion to write FIND-FIRST-ODD, a function that returns the first odd number in a list, or NIL if there are none. Start by copying the recursion template values for ANYODDP; only a small change is necessary to derive FIND-FIRST-ODD.
+(defun anyoddp (x)
+  (cond ((null x) nil)
+        ((oddp (first x)) t)
+        (t (anyoddp (rest x)))))
+
+(defun find-first-odd (x)
+  (cond ((null x) nil)
+        ((oddp (first x)) (first x))
+        (t (find-first-odd (rest x)))))
