@@ -173,3 +173,21 @@
   (cond ((null l) nil)
         ((eq (first l) x) l)
         (t (my-member x (rest l)))))
+
+;;; Ex 8.30
+;;; Write MY-ASSOC, a recursive version of ASSOC.
+(defun my-assoc (x l)
+  (cond ((null l) nil)
+        ((member x (first l)) (first l))
+        (t (my-assoc x (rest l)))))
+
+;;; Ex 8.31
+;;; Suppose we want to tell as quickly as possible whether one list is shorter than another. If one list has five elements and the other has a million, we don't want to have to go through all one million cons cells before deciding that the second list is longer.
+;;; So we must not call LENGTH on the two lists. Write a recursive function COMPARE-LENGTH that takes two lists as input and returns one of the following symbols:
+;;; SAME-LENGTH, FIRST-IS-LONGER, or SECOND-IS-LONGER.
+;;; Use triple-test simultanous recursion.
+(defun compare-length (m n)
+  (cond ((and (null m) (null n)) 'same-length)
+        ((null m) 'second-is-longer)
+        ((null n) 'first-is-longer)
+        (t (compare-length (rest m) (rest n)))))
