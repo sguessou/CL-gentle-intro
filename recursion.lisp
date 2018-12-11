@@ -137,3 +137,9 @@
 (defun count-down (n)
   (cond ((zerop n) (list n))
         (t (cons n (count-down (- n 1))))))
+
+;;; Ex 8.27
+;;; Write SQUARE-LIST, a recursive function that takes a list of numbers as input and returns a list of their squares. (SQUARE-LIST '(3 4 5 6)) should return (9 16 25 36).
+(defun square-list (l)
+  (cond ((null l) nil)
+        (t (cons (* (car l) (car l)) (square-list (rest l))))))
