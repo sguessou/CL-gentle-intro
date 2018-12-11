@@ -112,3 +112,10 @@
 (defun add-nums (x)
   (cond ((zerop x) 0)
         (t (+ x (add-nums (- x 1))))))
+
+;;; Ex 8.22
+;;; Write a recursive function ALL-EQUAL that returns T if the first element of a list is equal to the second, the second is equal to the third, the third is equal to the fourth, and so on. (ALL-EQUAL '(I I I I)) shoul return T.
+;;; (ALL-EQUAL '(I I E I)) should return NIL. ALL-EQUAL should return T for lists with less than two elements.
+(defun all-equal (l)
+  (cond ((atom (cdr l)) t)
+        (t (and (eq (first l) (second l)) (all-equal (rest l)))))) 
