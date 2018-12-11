@@ -127,6 +127,16 @@
   (cond ((zerop n) nil)
         (t (cons n (count-down (- n 1))))))
 
+;;; Ex 8.25
+;;; How could COUNT-DOWN be used to write an applicative version of FACT?
+(defun fact (n)
+  (cond ((zerop n) 1)
+        (t (* n (fact (- n 1))))))
+
+(defun fact (n)
+  (reduce #'(lambda (x y) (* x y))
+          (count-down n)))
+
 ;;; Ex 8.26 
 ;;; Suppose we wanted to modify COUNT-DOWN so that the list it constructs ends in zero. 
 ;;; For example, (COUNT-DOWN 5) would produce (5 4 3 2 1 0). Show two ways this can be done.
