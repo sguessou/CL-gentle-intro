@@ -126,3 +126,14 @@
 (defun count-down (n)
   (cond ((zerop n) nil)
         (t (cons n (count-down (- n 1))))))
+
+;;; Ex 8.26 
+;;; Suppose we wanted to modify COUNT-DOWN so that the list it constructs ends in zero. 
+;;; For example, (COUNT-DOWN 5) would produce (5 4 3 2 1 0). Show two ways this can be done.
+(defun count-down (n)
+  (cond ((zerop n) (cons n nil))
+        (t (cons n (count-down (- n 1))))))
+
+(defun count-down (n)
+  (cond ((zerop n) (list n))
+        (t (cons n (count-down (- n 1))))))
