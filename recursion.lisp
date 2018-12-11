@@ -153,3 +153,23 @@
 (defun square-list (l)
   (cond ((null l) nil)
         (t (cons (* (car l) (car l)) (square-list (rest l))))))
+
+;;; Ex 8.27
+;;; The expressions (MY-NTH 5 '(A B C)) and (MY-NTH 1000 '(A B C)) both run off the end of the list, and hence produce a NIL result.
+;;; Yet the second expression takes quite a bit longer to execute than the first.
+;;; Modify MY-NTH so that the recursion stops as soon the function runs off the end of the list.
+(defun my-nth (n x)
+  (cond ((zerop n) (first x))
+        (t (my-nth (- n 1) (rest x)))))
+
+(defun my-nth (n x)
+  (cond ((or (zerop n) (atom (cdr x))) (first x))
+        (t (my-nth (- n 1) (rest x)))))
+
+;;; Ex 8.29
+;;; Write MY-MEMBER, a recursive version of MEMBER. This function will take two inputs, but you will only want to reduce one of them with each successive call.
+;;; The other should remain unchanged.
+(defun my-member (x l)
+  (cond ((null l) nil)
+        ((eq (first l) x) l)
+        (t (my-member x (rest l)))))
