@@ -104,3 +104,11 @@
 (defun last-element (x)
   (cond ((atom (cdr x)) (car x))
         (t (last-element (rest x)))))
+
+
+;;; Ex 8.21
+;;; Write a recursive function ADD-NUMS that add up the numbers N, N-1, N-2 and so on, down to 0, and returns the result.
+;;; For example, (ADD-NUMS 5) should compute 5+4+3+2+1+0, which is 15.
+(defun add-nums (x)
+  (cond ((zerop x) 0)
+        (t (+ x (add-nums (- x 1))))))
