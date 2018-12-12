@@ -191,3 +191,11 @@
         ((null m) 'second-is-longer)
         ((null n) 'first-is-longer)
         (t (compare-length (rest m) (rest n)))))
+
+;;; Ex 8.32
+;;; Write the function SUM-NUMERIC-ELEMENTS, which adds up all the numbers in a list and ignores the non-numbers. (SUM-NUMERIC-ELEMENTS '(3 BEARS 3 BOWLS AND 1 GIRL)) should return seven.
+(defun sum-numeric-elements (l)
+  (cond ((null l) 0)
+        ((numberp (first l)) (+ (first l) (sum-numeric-elements (rest l))))
+        (t (sum-numeric-elements (rest l)))))
+
