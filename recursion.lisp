@@ -214,3 +214,12 @@
          (cons (first a) 
                (my-intersection (rest a) (remove (first a) b))))
         (t (my-intersection (rest a) b))))
+
+;;; Ex 8.35
+;;; Write MY-SET-DIFFERENCE, a recursive version of the SET-DIFFERENCE function.
+(defun my-set-difference (a b)
+  (cond ((or (null a) (null b)) nil)
+        ((not (member (first a) b))  
+         (cons (first a) 
+               (my-set-difference (rest a) (remove (first a) b))))
+        (t (my-set-difference (rest a) b))))
