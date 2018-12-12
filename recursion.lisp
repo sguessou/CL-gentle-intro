@@ -206,3 +206,11 @@
         ((eq s (first l)) (my-remove s (rest l)))
         (t (cons (first l) (my-remove s (rest l))))))
 
+;;; Ex 8.34
+;;; Write MY-INTERSECTION, a recursive version of the INTERSECTION function.
+(defun my-intersection (a b)
+  (cond ((or (null a) (null b)) nil)
+        ((member (first a) b) 
+         (cons (first a) 
+               (my-intersection (rest a) (remove (first a) b))))
+        (t (my-intersection (rest a) b))))
