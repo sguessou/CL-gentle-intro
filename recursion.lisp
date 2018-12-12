@@ -199,3 +199,10 @@
         ((numberp (first l)) (+ (first l) (sum-numeric-elements (rest l))))
         (t (sum-numeric-elements (rest l)))))
 
+;;; Ex 8.33
+;;; Write MY-REMOVE, a recursive version of the REMOVE function.
+(defun my-remove (s l)
+  (cond ((null l) nil)
+        ((eq s (first l)) (my-remove s (rest l)))
+        (t (cons (first l) (my-remove s (rest l))))))
+
