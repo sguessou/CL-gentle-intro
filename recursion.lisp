@@ -237,4 +237,18 @@
   (cond ((null l) 0)
         (t (+ (if (oddp (first l)) 1 0) (count-odd (rest l))))))
 
+;;; Ex 8.37
+;;; Define a simple function COMBINE that takes two numbers as input and returns their sum. Now replace the occurence of + in FIB with COMBINE. Trace FIB and COMBINE. Trace FIB and COMBINE, and try evaluating (FIB 3) or (FIB 4). What can you say about the relationship between COMBINE, terminal calls, and nonterminal calls?
+(defun combine (a b)
+  (+ a b))
+
+(defun fib (n)
+  (cond ((equal n 0) 1)
+        ((equal n 1) 1)
+        (t (combine (fib (- n 1)) (fib (- n 2))))))
+
+(defun fib (n)
+  (cond ((equal n 0) 1)
+        ((equal n 1) 1)
+        (t (+ (fib (- n 1)) (fib (- n 2))))))
 
