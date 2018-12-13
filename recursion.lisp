@@ -223,3 +223,18 @@
          (cons (first a) 
                (my-set-difference (rest a) (remove (first a) b))))
         (t (my-set-difference (rest a) b))))
+
+;;; Ex 8.36
+;;; The function COUNT-ODD counts the number of odd elements in a list of numbers; for example, (COUNT-ODD '(4 5 6 7 8)) should return two.
+;;; Show how to write COUNT-ODD using conditional augmentation.
+;;; Then write another version of COUNT-ODD using the regular augmenting recursion template.
+(defun count-odd (l)
+  (cond ((null l) 0)
+        ((oddp (first l)) (+ 1 (count-odd (rest l))))
+        (t (count-odd (rest l))))) 
+
+(defun count-odd (l)
+  (cond ((null l) 0)
+        (t (+ (if (oddp (first l)) 1 0) (count-odd (rest l))))))
+
+
