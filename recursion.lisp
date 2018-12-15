@@ -297,3 +297,10 @@
 (defun tree-depth (l)
   (cond ((atom l) 0)
         (t (+ 1 (max (tree-depth (car l)) (tree-depth (cdr l)))))))
+
+;;; Ex 8.45
+;;; Write a function PAREN-DEPTH that returns the maximum depth of nested parentheses in a list. (PAREN-DEPTH '(A B C)) should return one, whereas TREE-DEPTH would return three.
+;;; (PAREN-DEPTH '(A B ((C) D) E)) should return three, since there is an element C that is nested in three level of parentheses.
+(defun paren-depth (l)
+  (cond ((atom l) 0)
+        (t (max (+ 1 (paren-depth (car l))) (paren-depth (cdr l))))))
