@@ -274,3 +274,10 @@
   (cond ((or (null l) (symbolp l)) 0)
         ((numberp l) l)
         (t (+ (sum-tree (car l)) (sum-tree (cdr l))))))
+
+;;; Ex 8.42
+;;; Write MY-SUBST, a recursive version of the SUBST function.
+(defun my-subst (n o l)
+  (cond ((eq l o) n)
+        ((atom l) l)
+        (t (cons (my-subst n o (car l)) (my-subst n o (cdr l))))))
