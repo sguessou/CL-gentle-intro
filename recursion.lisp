@@ -281,3 +281,11 @@
   (cond ((eq l o) n)
         ((atom l) l)
         (t (cons (my-subst n o (car l)) (my-subst n o (cdr l))))))
+
+;;; Ex 8.43
+;;; Write FLATTEN, a function that returns all the element of an arbitrarily nested list in a single-level list.
+;;; (FLATTEN '((A B (R)) A C (A D ((A (B)) R) A))) should return (A B R A C A D A B R A).
+(defun flatten (l)
+  (cond ((null l) nil)
+        ((atom (car l)) (cons (car l) (flatten (cdr l))))
+        (t (append (flatten (car l)) (flatten (cdr l))))))
