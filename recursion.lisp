@@ -266,3 +266,11 @@
 (defun count-cons (l)
   (cond ((atom l) 0)
         (t (+ 1 (count-cons (car l)) (count-cons (cdr l))))))
+
+;;; Ex 8.41
+;;; write a function SUM-TREE that returns the sum of all the numbers appearing in a tree. Nonnumbers should be ignored.
+;;; (SUM-TREE '((3 BEARS) (3 BOWLS) (1 GIRL))) should return seven.
+(defun sum-tree (l)
+  (cond ((or (null l) (symbolp l)) 0)
+        ((numberp l) l)
+        (t (+ (sum-tree (car l)) (sum-tree (cdr l))))))
