@@ -287,5 +287,13 @@
 ;;; (FLATTEN '((A B (R)) A C (A D ((A (B)) R) A))) should return (A B R A C A D A B R A).
 (defun flatten (l)
   (cond ((null l) nil)
-        ((atom (car l)) (cons (car l) (flatten (cdr l))))
+        ((atom l) (list l))
         (t (append (flatten (car l)) (flatten (cdr l))))))
+
+;;; Ex 8.44
+;;; Write a function TREE-DEPTH that returns the maximum depth of a binary tree.
+;;; (TREE-DEPTH '(A . B)) should return one. 
+;;; (TREE-DEPTH '((A B C D))) should return five and (TREE-DEPTH '((A . B).(C . D))) should return two.
+(defun tree-depth (l)
+  (cond ((atom l) 0)
+        (t (+ 1 (max (tree-depth (car l)) (tree-depth (cdr l)))))))
