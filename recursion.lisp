@@ -366,3 +366,15 @@
         (t (append (list (first a))
                    (my-union (rest a)
                              (remove (first a) b))))))
+
+;;; Ex 8.53
+;;; Write LARGEST-EVEN, a recursive function that returns the largest even number in a list of nonnegative integers.
+;;; (LARGEST-EVEN '(5 2 4 3)) should return four.
+;;; (LARGEST-EVEN NIL) should return zero.
+;;; Use the built-in MAX function, which returns the largest of its inputs.
+(defun largest-even (l)
+  (cond ((null l) 0)
+        (t (max (if (evenp (first l)) 
+                    (first l) 0)
+                (largest-even 
+                 (rest l))))))
