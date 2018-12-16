@@ -352,3 +352,9 @@
   (cond ((null l) nil)
         (t (cons l (sublists (rest l))))))
 
+;;; Ex 8.51
+;;; The simplest way to write MY-REVERSE, a recursive version of REVERSE, is with a helping function plus a recursive function of two inputs.
+;;; Write this version of MY-REVERSE.
+(defun my-reverse (l)
+  (cond ((null l) nil)
+        (t (append (last l) (my-reverse (butlast l))))))
