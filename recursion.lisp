@@ -304,3 +304,19 @@
 (defun paren-depth (l)
   (cond ((atom l) 0)
         (t (max (+ 1 (paren-depth (car l))) (paren-depth (cdr l))))))
+
+;;; Ex 8.46
+;;; Another way to solve the problem of counting upward is to add an element to the end of the list with each recursive call instead of adding elements at the beginning.
+;;; This approach doesn't require a helping function. Write this version of COUNT-UP.
+(defun count-up (n)
+  (count-up-recursively 1 n))
+
+(defun count-up-recursively  (cnt n)
+  (cond ((> cnt n) nil)
+        (t (cons cnt
+                 (count-up-recursively
+                  (+ cnt 1) n)))))
+
+(defun count-up (n)
+  (cond ((zerop n) nil)
+        (t (append (count-up (- n 1)) (list n)))))
