@@ -345,3 +345,10 @@
         (t (cons (list (first a) (first b)) 
                    (pairing (rest a) (rest b)))))) 
 
+;;; Ex 8.50
+;;; Write SUBLISTS, a function that returns the successive sublist of a list.
+;;; (SUBLIST '(FEE FIE FOE)) should return ((FEE FIE FOE) (FIE FOE) (FOE)).
+(defun sublists (l)
+  (cond ((null l) nil)
+        (t (cons l (sublists (rest l))))))
+
