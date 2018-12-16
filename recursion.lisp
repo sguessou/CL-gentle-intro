@@ -335,3 +335,13 @@
 (defun bury (s n)
   (cond ((zerop n) s)
         (t (bury (list s) (- n 1)))))
+
+;;; Ex 8.49
+;;; Write PAIRING, a function that pairs the elements of two lists.
+;;; (PAIRING '(A B C) '(1 2 3)) should return ((A 1) (B 2) (C 3)).
+;;; You may assume that the two lists will be of equal length.
+(defun pairing (a b)
+  (cond ((null a) nil)
+        (t (cons (list (first a) (first b)) 
+                   (pairing (rest a) (rest b)))))) 
+
