@@ -320,3 +320,12 @@
 (defun count-up (n)
   (cond ((zerop n) nil)
         (t (append (count-up (- n 1)) (list n)))))
+
+;;; Ex 8.47
+;;; Write MAKE-LOAF, a function that returns a loaf of size N.
+;;; (MAKE-LOAF 4) should return (X X X X). Use IF instead of COND.
+(defun make-loaf (n)
+  (if (zerop n)
+      nil
+      (append (make-loaf (- n 1)) (list 'X))))
+
