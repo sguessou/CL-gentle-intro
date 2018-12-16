@@ -329,3 +329,9 @@
       nil
       (append (make-loaf (- n 1)) (list 'X))))
 
+;;; Ex 8.48
+;;; Write a recursive function BURY that buries an item under n levels of parentheses. (BURY 'FRED 2) should return ((FRED)), while (BURY 'FRED 5) should return (((((FRED))))).
+;;; Which recursion template did you use?
+(defun bury (s n)
+  (cond ((zerop n) s)
+        (t (bury (list s) (- n 1)))))
