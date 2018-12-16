@@ -358,3 +358,11 @@
 (defun my-reverse (l)
   (cond ((null l) nil)
         (t (append (last l) (my-reverse (butlast l))))))
+
+;;; Ex 8.52
+;;; Write MY-UNION, a recursive version of UNION.
+(defun my-union (a b)
+  (cond ((null a) b)
+        (t (append (list (first a))
+                   (my-union (rest a)
+                             (remove (first a) b))))))
