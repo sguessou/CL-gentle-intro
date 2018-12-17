@@ -415,3 +415,16 @@
 
 (defun left-half (l)
   (left-half-helper (round (/ (length l) 2)) l))
+
+;;; Ex 8.58
+;;; Write MERGE-LISTS, a function that takes two lists of numbers, each in increasing order, as input. The function should return a list that is a merger of the elements in its inputs, in order.
+;;; (MERGE-LISTS '(1 2 6 8 10 12) '(2 3 5 9 13)) should return (1 2 2 3 5 6 8 9 10 12 13).
+(defun merge-lists (a b)
+  (cond ((null a) b)
+        ((null b) a)
+        ((and (null a) (null b) nil))
+        (t (append (if (> (first a) (first b))
+                       (list (first b) (first a))
+                       (list (first a) (first b)))
+                   (merge-lists (rest a) (rest b))))))
+
