@@ -402,3 +402,16 @@
 
 (defun every-other (l)
   (every-other-helper 1 l))
+
+;;; Ex 8.57
+;;; Write LEFT-HALF, a recursive function in two parts that returns the first n/2 element of a list of length n.
+;;; (LEFT-HALF '(A B C D E)) should return (A B C).
+;;; (LEFT-HALF '(1 2 3 4 5 6 7 8)) should return (1 2 3 4).
+;;; You may use LENGTH but not REVERSE in your definition.
+(defun left-half-helper (n l)
+  (cond ((zerop n) (list (first l)))
+        (t (append (list (first l))
+                   (left-half-helper (- n 1) (rest l))))))
+
+(defun left-half (l)
+  (left-half-helper (round (/ (length l) 2)) l))
