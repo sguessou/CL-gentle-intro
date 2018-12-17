@@ -428,3 +428,49 @@
                        (list (first a) (first b)))
                    (merge-lists (rest a) (rest b))))))
 
+;;; Ex 8.60
+;;; Each person in the database is represented by an entry of form 
+;;; (name father mother).
+;;; When someone's father or mother is unknown, a value of NIL is used.  
+(setf family
+     '((colin nil nil) (deirdre nil nil) (arthur nil nil)
+       (kate nil nil) (frank nil nil) (linda nil nil)
+       (suzanne colin deirdre) (bruce arthur kate) (charles arthur kate)
+       (david arthur kate) (ellen arthur kate) (george frank linda)
+       (hillary frank linda) (andre nil nil) (tamara bruce suzanne)
+       (vincent bruce suzanne) (wanda nil nil) (ivan george ellen)
+       (julie george ellen) (marie george ellen) (nigel andre hillary)
+       (frederick nil tamara) (zelda vincent wanda) (joshua ivan wanda)
+       (quentin nil nil) (robert quentin julie) (olivia nigel marie)
+       (peter nigel marie) (erica nil nil) (yvette robert zelda)
+       (diane peter erica)))
+
+;;; a.
+;;; Write the functions FATHER, MOTHER, PARENTS, and CHILDREN that returns a person's father, mother, a list of his or her known parents, and a list of his or her children, respectively.
+;;; (FATHER 'SUZANNE) should return COLIN.
+;;; (PARENTS 'SUZANNE) should return (COLIN DEIRDRE).
+;;; (PARENTS 'FREDERICK) should return (TAMARA), since Frederick's father is unknown. (CHILDREN 'ARTHUR) should return the set (BRUCE CHARLES DAVID ELLEN).
+;;; If any of these functions is given NIL as input, it should return NIL.
+;;; This feature will be useful later when we write some recursive functions.
+(defun father (n)
+  (cadr (find-if #'(lambda (m)
+               (eq (car m) n))
+           family)))
+
+(defun mother (n)
+  (caddr (find-if #'(lambda (m)
+               (eq (car m) n))
+           family)))
+
+(defun parents (n)
+  (remove nil (cdr (find-if #'(lambda (m)
+               (eq (car m) n))
+           family))))
+
+(defun children (n)
+  (mapcar #'(lambda (p)
+              (car p))
+          (remove-if-not #'(lambda (m)
+               (eq (cadr m) n))
+           family)))
+
