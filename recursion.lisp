@@ -388,3 +388,17 @@
 
 (defun huge (n)
   (huge-helper n n))
+
+;;; Ex 8.56
+;;; Write EVERY-OTHER, a recursive function that returns every other element of a list--the first, third, fifth, and so on. 
+;;; (EVERY-OTHER '(A B C D E F G)) should return (A C E G).
+;;; (EVERY-OTHER '(I CAME I SAW I CONQUERED)) should return (I I I).
+(defun every-other-helper (n l)
+  (cond ((null l) nil)
+        (t (append (if (oddp n) 
+                       (list (first l))
+                       nil)
+                   (every-other-helper (+ n 1) (rest l))))))
+
+(defun every-other (l)
+  (every-other-helper 1 l))
