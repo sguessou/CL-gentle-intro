@@ -464,13 +464,54 @@
 
 (defun parents (n)
   (remove nil (cdr (find-if #'(lambda (m)
-               (eq (car m) n))
+              (eq (car m) n))
            family))))
 
 (defun children (n)
   (mapcar #'(lambda (p)
               (car p))
           (remove-if-not #'(lambda (m)
-               (eq (cadr m) n))
+               (or (eq (cadr m) n) (eq (caddr m) n)))
            family)))
+
+;;; b.
+;;; Write SIBLINGS, a function that returns a list of a person's siblings, including genetic half-siblings.
+;;; (SIBLINGS 'BRUCE) should return (CHARLES DAVID ELLEN).
+;;; (SIBLINGS 'ZELDA) should return (JOSHUA).
+(defun list-fathers-helper (f)
+  (cond ((null f) nil)
+        (t (append (if (null (cadr (first f)))
+                       nil
+                       (list (cadr (first f))))
+                   (list-fathers-helper (rest f))))))
+
+(defun list-fathers (f)
+  (remove-duplicates (list-fathers-helper f)))
+
+(defun list-mothers-helper (f)
+  (cond ((null f) nil)
+        (t (append (if (null (caddr (first f)))
+                       nil
+                       (list (caddr (first f))))
+                   (list-mothers-helper (rest f))))))
+
+(defun list-mothers (f)
+  (remove-duplicates (list-mothers-helper f)))
+
+(defun list-parents (f)
+  (union (list-fathers f) (list-mothers f)))
+
+(defun siblings (n)
+  (remove n (assoc n 
+                   (remove-if-not #'(lambda (x)
+                                      (> (length x) 1))
+                                  (mapcar #'children 
+                                          (list-parents family))))))
+
+
+;;; simpler solution
+(defun siblings (x)
+  (set-difference (union (children (father x))
+                         (children (mother x)))
+                  (list x)))
 
