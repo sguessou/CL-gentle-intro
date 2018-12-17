@@ -378,3 +378,13 @@
                     (first l) 0)
                 (largest-even 
                  (rest l))))))
+
+;;; Ex 8.54
+;;; Write a recursive function HUGE that raises a number to its own power. (HUGE 2) shoul return 4, (HUGE 3) should return 27, and so on.
+;;; Do not use REDUCE.
+(defun huge-helper (x n)
+  (cond ((zerop n) 1)
+        (t (* x (huge-helper x (- n 1))))))
+
+(defun huge (n)
+  (huge-helper n n))
