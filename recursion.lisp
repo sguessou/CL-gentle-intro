@@ -533,3 +533,9 @@
   (reduce #'(lambda (x y)
               (union x y))
           (mapcar #'(lambda (x) (funcall fn x)) l)))
+
+;;; d.
+;;; Write GRANDPARENTS, a function that returns the set of a person's grandparents. Use MAPUNION in your solution.
+(defun grandparents (fn n)
+  (mapunion fn (funcall fn n)))
+
