@@ -548,3 +548,13 @@
             (mapunion #'siblings 
                       (parents n)))) 
 
+;;; f.
+;;; Write the two-input recursive predicate DESCENDED-FROM that returns a true value if the first person is descended from the second.
+;;; (DESCENDED-FROM 'TAMARA 'ARTHUR) should return T. (DESCENDED-FROM 'TAMARA 'LINDA) should return NIL.
+;;; (Hint: You are descended from someone if he is one of your parents, or if either your father or mother is descended from him. This is a recursive definition.)
+(defun descended-from (n m)
+  (cond ((null (parents n)) nil)
+        ((not (null (member m (parents n)))) t)
+        (t (or (descended-from (father n) m) (descended-from (mother n) m)))))
+
+
