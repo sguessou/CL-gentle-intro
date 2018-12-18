@@ -557,4 +557,9 @@
         ((not (null (member m (parents n)))) t)
         (t (or (descended-from (father n) m) (descended-from (mother n) m)))))
 
-
+;;; g.
+;;; Write the recursive function ANCESTORS that returns a person's set of ancestors. (ANCESTORS 'MARIE) should return the set (ELLEN ARTHUR KATE GEORGE FRANK LINDA).
+;;; (Hint: A person's ancestors are his parents plus his parents' ancestors. This is a recursive definition.)
+(defun ancestors (n)
+  (cond ((null (parents n)) nil)
+        (t (append (parents n) (parents (father n)) (parents (mother n))))))
