@@ -563,3 +563,15 @@
 (defun ancestors (n)
   (cond ((null (parents n)) nil)
         (t (append (parents n) (parents (father n)) (parents (mother n))))))
+
+;;; h.
+;;; Write the recursive function GENERATION-GAP that returns the number of generations separating a person and one of his or her ancestors.
+;;; (GENERATION-GAP 'SUZANNE 'COLIN) should return one.
+;;; (GENERATION-GAP 'FREDERICK 'COLIN) should return three.
+;;; (GENERATION-GAP 'SUZANNE 'LINDA) should return NIL, because Linda is not an ancestor of Frederick.
+(defun generation-gap (n m)
+  (cond ((null (descended-from n m)) nil)
+        ((member m (parents n)) 1)
+        (t (if (null (descended-from (father n) m))
+               (+ 1 (generation-gap (mother n) m))
+               (+ 1 (generation-gap (father n) m))))))
