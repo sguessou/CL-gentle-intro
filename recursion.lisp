@@ -539,3 +539,12 @@
 (defun grandparents (fn n)
   (mapunion fn (funcall fn n)))
 
+;;; e.
+;;; Write COUSINS, a function that returns the set of a person's genetically related first cousins, in other words, the children of any of their parents' siblings.
+;;; (COUSINS 'JULIE) should return the set (TAMARA VINCENT NIGEL).
+;;; Use MAPUNION in your solution.
+(defun cousins (n)
+  (mapunion #'children
+            (mapunion #'siblings 
+                      (parents n)))) 
+
