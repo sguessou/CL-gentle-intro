@@ -457,15 +457,26 @@
                (eq (car m) n))
            family)))
 
+(defun father (n)
+  (cadr (assoc n family)))
+
 (defun mother (n)
   (caddr (find-if #'(lambda (m)
                (eq (car m) n))
            family)))
 
+(defun mother (n)
+  (caddr (assoc n family)))
+
 (defun parents (n)
   (remove nil (cdr (find-if #'(lambda (m)
               (eq (car m) n))
            family))))
+
+(defun parents (n)
+  (set-difference 
+   (assoc n family)
+   (list n)))
 
 (defun children (n)
   (mapcar #'(lambda (p)
@@ -509,9 +520,16 @@
                                           (list-parents family))))))
 
 
-;;; simpler solution
+;;; simpler solution for siblings
 (defun siblings (x)
   (set-difference (union (children (father x))
                          (children (mother x)))
                   (list x)))
 
+;;; c.
+;;; Write MAPUNION, an applicative operator that takes a function and a list as input, applies the function to every element of the list, and computes the union of all the results.
+;;; An example is (MAPUNION #'REST '((1 A B C) (2 E C J) (3 F A B C D))), which should return the set (A B C E J F D). Hint: MAPUNION can be defined as a combination of two applicative operators you already know.
+(defun mapunion (fn l)
+  (reduce #'(lambda (x y)
+              (union x y))
+          (mapcar #'(lambda (x) (funcall fn x)) l)))
