@@ -575,3 +575,26 @@
         (t (if (null (descended-from (father n) m))
                (+ 1 (generation-gap (mother n) m))
                (+ 1 (generation-gap (father n) m))))))
+
+;;; i.
+;;; Use the functions you have written to answer the following questions:
+;;; 1. Is Robert descended from Deirdre?
+(descended-from 'robert 'deirdre)
+NIL
+
+;;; 2. Who are Yvette's ancestors?
+(ancestors 'yvette)
+(ZELDA ROBERT JULIE QUENTIN WANDA VINCENT)
+
+;;; 3. What is the generation gap between Olivia and Frank?
+(generation-gap 'olivia 'frank)
+3
+
+;;; 4. Who are Peter's cousins?
+(cousins 'peter)
+(JOSHUA ROBERT)
+
+;;; 5. Who are Olivia's grandparents?
+(grandparents #'parents 'olivia)
+(GEORGE ELLEN HILLARY ANDRE)
+
