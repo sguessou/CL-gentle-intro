@@ -1,4 +1,4 @@
-;;; Chapter 8 - Recursion
+  ;;; Chapter 8 - Recursion
 ;;; Exercises
 
 ;;; Ex 8.2
@@ -597,4 +597,14 @@ NIL
 ;;; 5. Who are Olivia's grandparents?
 (grandparents #'parents 'olivia)
 (GEORGE ELLEN HILLARY ANDRE)
+
+;;; Ex 8.61
+;;; Write a tail-recursive version of COUNT-UP.
+(defun count-up (n)
+  (tr-count-up n nil))
+
+(defun tr-count-up (n result)
+  (cond ((zerop n) result)
+        (t (tr-count-up (- n 1) (cons n result)))))
+
 
