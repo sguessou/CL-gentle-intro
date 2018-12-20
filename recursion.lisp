@@ -607,4 +607,11 @@ NIL
   (cond ((zerop n) result)
         (t (tr-count-up (- n 1) (cons n result)))))
 
+;;; Ex 8.62
+;;; Write a tail-recursive version of FACT.
+(defun fact (n)
+  (tr-fact (- n 1) (* (- n 1) n)))
 
+(defun tr-fact (n result)
+  (cond ((eq n 1) result)
+        (t (tr-fact (- n 1) (* (- n 1) result)))))
