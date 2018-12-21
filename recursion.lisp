@@ -625,3 +625,13 @@ NIL
   (cond ((null a) (append b result))
         (t (tr-my-union (rest a) (remove (first a) b) 
                         (cons (first a) result)))))
+
+;;; INTERSECTION
+(defun my-intersection (a b)
+  (tr-my-intersection a b nil))
+
+(defun tr-my-intersection (a b result)
+  (cond ((null a) result)
+        (t (tr-my-intersection (rest a) b (if (member (first a) b)
+                                              (cons (first a) result)
+                                              result)))))
