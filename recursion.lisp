@@ -615,3 +615,13 @@ NIL
 (defun tr-fact (n result)
   (cond ((eq n 1) result)
         (t (tr-fact (- n 1) (* (- n 1) result)))))
+
+;;; Write tail-recursive versions of UNION, INTERSECTION, and SET-DIFFERENCE. Your functions need not return results in the same order as the built-in functions.
+;;; UNION
+(defun my-union (a b)
+  (tr-my-union a b nil))
+
+(defun tr-my-union (a b result)
+  (cond ((null a) (append b result))
+        (t (tr-my-union (rest a) (remove (first a) b) 
+                        (cons (first a) result)))))
