@@ -635,3 +635,14 @@ NIL
         (t (tr-my-intersection (rest a) b (if (member (first a) b)
                                               (cons (first a) result)
                                               result)))))
+
+;;; SET-DIFFERENCE
+(defun my-set-difference (a b)
+  (tr-set-difference a b nil))
+
+(defun tr-set-difference (a b result)
+  (cond ((null a) result)
+        (t (tr-set-difference (rest a) b (if (not (member (first a) b))
+                                               (cons (first a) result)
+                                               result)))))
+
