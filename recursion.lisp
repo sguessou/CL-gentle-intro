@@ -646,3 +646,15 @@ NIL
                                                (cons (first a) result)
                                                result)))))
 
+;;; Ex 8.64
+;;; Write a TREE-FIND-IF operator that returns the first non-NIL atom of a tree that satisfies a predicate.
+;;; (TREE-FIND-IF #'ODDP '((2 4) (5 6) (7))) should return 5.
+(defun tree-find-if (fn x)
+  (cond ((null x) nil)
+        (t (or (tr-tree-find-if fn (first x)) (tree-find-if fn (rest x))))))
+
+(defun tr-tree-find-if (fn x)
+  (cond ((null x) nil)
+        ((funcall fn (first x)) (first x))
+        (t (tr-tree-find-if fn (rest x)))))
+
