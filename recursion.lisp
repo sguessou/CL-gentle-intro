@@ -690,3 +690,22 @@ NIL
              (cond ((null x) result)
                    (t (tr-rev1 (rest x) (cons (first x) result))))))
     (tr-rev1 x nil)))
+
+;;; Ex 8.66
+;;; Write ARITH-EVAL, a function that evaluates arithmetic expressions.
+;;; (ARITH-EVAL '(2 + (3 * 4))) should return 14.
+(defun arith-eval (x)
+  (cond ((numberp x) x)
+        (t (funcall (second x) (if (numberp (first x))
+                                 (first x)
+                                 (arith-eval (first x)))
+                    (if (numberp (third x))
+                        (third x)
+                        (arith-eval (third x)))))))
+
+(defun arith-eval (x)
+  (cond ((numberp x) x)
+        (t (funcall (second x)
+                    (arith-eval (first x))
+                    (arith-eval (third x))))))
+
