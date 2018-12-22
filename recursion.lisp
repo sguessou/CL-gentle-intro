@@ -658,3 +658,35 @@ NIL
         ((funcall fn (first x)) (first x))
         (t (tr-tree-find-if fn (rest x)))))
 
+;;; 8.65
+;;; Use LABELS to write versions of TR-COUNT-SLICES and TR-REVERSE.
+
+;;; TR-COUNT-SLICES
+(defun tr-count-slices (loaf)
+  (tr-cs1 loaf 0))
+
+(defun tr-cs1 (loaf n)
+  (cond ((null loaf) n)
+        (t (tr-cs1 (rest loaf) (+ n 1)))))
+
+(defun tr-count-slices (loaf)
+  (labels ((tr-cs1 (loaf n)
+             (cond ((null loaf) n)
+                   (t (tr-cs1 (rest loaf) (+ n 1))))))
+    (tr-cs1 loaf 0)))
+
+;;; TR-REVERSE
+(defun tr-reverse (x)
+  (tr-rev1 x nil))
+
+(defun tr-rev1 (x result)
+  (cond ((null x) result)
+        (t (tr-rev1
+            (rest x)
+            (cons (first x) result)))))
+
+(defun tr-reverse (x)
+  (labels ((tr-rev1 (x result)
+             (cond ((null x) result)
+                   (t (tr-rev1 (rest x) (cons (first x) result))))))
+    (tr-rev1 x nil)))
