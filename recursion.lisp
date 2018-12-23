@@ -703,9 +703,27 @@ NIL
                         (third x)
                         (arith-eval (third x)))))))
 
+
 (defun arith-eval (x)
   (cond ((numberp x) x)
         (t (funcall (second x)
                     (arith-eval (first x))
                     (arith-eval (third x))))))
 
+;;; Ex 8.67
+;;; Write a predicate LEGALP that returns T if its input is a legal arithmetic expression. For example, (LEGALP 4) and (LEGALP '((2 * 2) - 3)) should return T.
+;;; (LEGALP NIL) and (LEGALP '(A B C D)) should return NIL.
+(defun legalp (x)
+  (cond ((null x) nil) 
+        ((numberp x) t)
+        ((or (symbolp (first x)) (symbolp (third x))) nil)
+        (t (and (legalp (first x)) (symbolp (second x)) (legalp (third x))))))
+
+;;; Alternative solution
+(defun legalp (x)
+  (cond ((numberp x) t)
+        ((atom x) nil)
+        (t (and (legalp (first x))
+                (member (second x)
+                        '(+ - * /))
+                (legalp (third x))))))
