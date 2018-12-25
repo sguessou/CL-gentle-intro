@@ -727,3 +727,28 @@ NIL
                 (member (second x)
                         '(+ - * /))
                 (legalp (third x))))))
+
+;;; Ex 8.69
+;;; Of the positive integers greater than one, some are primes while others are not. Primes are numbers that are divisible only by themselves and by 1.
+;;; A nonprime, which is known as a composite number, can always be factored into primes. The number 60 has factors 2, 2, 3 and 5 which means 60 = 2x2x3x5.
+;;; Write a recursive definition for positive integers greater than one in terms of prime numbers.
+(defun factors (n)
+  (factors-help n 2))
+
+(defun factors-help (n p)
+  (cond ((equal n 1) nil)
+        ((zerop (rem n p))
+         (cons p (factors-help (/ n p) p)))
+        (t (factors-help n (+ p 1)))))
+
+;;; Ex 8.70
+;;; Write a FACTOR-TREE function that returns a factorization tree.
+;;; (FACTOR-TREE 60) should return the list (60 2 (30 2 (15 3 5))).
+(defun factor-tree (n)
+  (factor-tree-help n 2))
+
+(defun factor-tree-help (n p)
+  (cond ((eq n p) n) 
+        ((zerop (rem n p))
+         (list n p (factor-tree-help (/ n p) p)))
+        (t (factor-tree-help n (+ p 1)))))
