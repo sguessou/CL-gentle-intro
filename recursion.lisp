@@ -1,4 +1,4 @@
-  ;;; Chapter 8 - Recursion
+;;; Chapter 8 - Recursion
 ;;; Exercises
 
 ;;; Ex 8.2
@@ -752,3 +752,4 @@ NIL
         ((zerop (rem n p))
          (list n p (factor-tree-help (/ n p) p)))
         (t (factor-tree-help n (+ p 1)))))
+

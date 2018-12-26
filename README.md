@@ -10,3 +10,4 @@
 * Chapter 6 - **List Data Structures**
 * Chapter 7 - **Applicative Programming**
 * Chapter 8 - **Recursion**
+* Chapter 9 - **Input/Output**
