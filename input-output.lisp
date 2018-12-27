@@ -103,3 +103,24 @@
     (let ((w (read)))
       (format t "~&The gross pay is ~S €." (* h w)))))
 
+;;; Ex 9.7
+;;; The COOKIE-MONSTER function keeps reading data from the terminal until it reads the symbol COOKIE.
+;;; Write COOKIE-MONSTER. Here is a sample interaction:
+> (cookie-monster)
+Give me cookie!!!
+Cookie? rock
+No want ROCK...
+
+Give me cookie!!!
+Cookie? cookie
+Thank you!...Munch munch munch...BURP
+NIL
+
+(defun cookie-monster ()
+  (format t "~&Give me cookie!!!")
+  (format t "~&Cookie? ")
+  (let ((cookie (read)))
+    (cond ((string-equal cookie "cookie") 
+           (format t "~&Thank you!...Munch munch munch...BURP"))
+          (t (format t "~&No want ~A..." cookie) 
+             (cookie-monster)))))
