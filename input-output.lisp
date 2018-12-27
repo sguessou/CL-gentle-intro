@@ -141,3 +141,15 @@ NIL
         ((< n 0) (format t "Error!"))
         (t (format t " ")
            (space-over (- n 1)))))
+
+;;; b.
+;;; Write a function PLOT-ONE-POINT that takes two inputs PLOTTING-STRING and Y-VAL, prints PLOTTING-STRING (without the quotes) in column Y-VAL, and then moves to a new line. 
+;;; The leftmost column is numbered zero.
+(defun plot-one-point ()
+  (format t "~&Enter plotting string: ")
+  (let ((plotting-string (read)))
+    (format t "~&Enter y-val: ")
+    (let ((y-val (read)))
+      (space-over y-val)
+      (format t "~A" plotting-string))))
+
