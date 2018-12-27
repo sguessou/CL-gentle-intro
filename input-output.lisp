@@ -153,3 +153,20 @@ NIL
       (space-over y-val)
       (format t "~A" plotting-string))))
 
+(defun plot-one-point (plotting-string y-val)
+  (space-over y-val)
+  (format t "~A~%" plotting-string))
+
+;;; c.
+;;; Write a function PLOT-POINTS that takes a string and a list of y values as input and plot them. (PLOT-POINTS "<>" '(4 6 8 10 8 6 4)) should print
+   <>
+     <>
+       <>
+         <>
+       <>
+     <>
+   <>
+
+(defun plot-points (str l)
+  (mapcar #'(lambda (x) (plot-one-point str x)) l))
+  
