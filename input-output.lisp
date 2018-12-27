@@ -51,3 +51,26 @@
            (format t "~&Take one down,")
            (format t "~&Pass it around,")
            (ninety-nine-bottles (- n 1)))))
+
+;;; Ex 9.5
+;;; Part of any tic-tac-toe playing program is a function to display the board. Write a function PRINT-BOARD that takes a list of nine element as input. Each element will be an X, an O, or NIL. PRINT-BOARD should display the corresponding board.
+;;; (PRINT-BOARD '(X O O NIL X NIL O NIL X)) should print:
+              X | O | O
+             -----------
+                | X |   
+             -----------
+              O |   | X
+
+(defun repl (a b c)
+  (cond ((eq a b) c)
+        (t a)))
+
+(defun print-board (l)
+  (cond ((null l) (format t "~%"))
+        (t (format t "~& ~A | ~A | ~A" 
+                   (repl (first l) nil " ")
+                   (repl (second l) nil " ")
+                   (repl (third l) nil " "))
+           (if (cdddr l)
+               (format t "~&-----------"))
+           (print-board (cdddr l)))))
