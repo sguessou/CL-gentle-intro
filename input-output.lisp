@@ -74,3 +74,32 @@
            (if (cdddr l)
                (format t "~&-----------"))
            (print-board (cdddr l)))))
+
+(defun print-board (b)
+  (let ((b2 (sublis '((x   . "X")
+                      (o   . "O")
+                      (nil . " "))
+                    b)))
+    (format t "~&")
+    (print-line b2)
+    (format t "-----------~%")
+    (print-line (nthcdr 3 b2))
+    (format t "-----------~%")
+    (print-line (nthcdr 6 b2))))
+
+(defun print-line (line)
+  (format t " ~A | ~A | ~A~%"
+          (first line)
+          (second line)
+          (third line)))
+
+;;; Ex 9.6
+;;; Write a function to compute an hourly worker's gross pay given an hourly wage in dollars and the number of hours he or she worked.
+;;; Your function should prompt for each input it needs by printing a message in English. It should display its answers in English as well.
+(defun gross-pay ()
+  (format t "~&Please enter your hourly wage: ")
+  (let ((h (read)))
+    (format t "~&Please enter the working hours: ")
+    (let ((w (read)))
+      (format t "~&The gross pay is ~S €." (* h w)))))
+
