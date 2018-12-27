@@ -34,3 +34,20 @@
         (t (draw-line x)
            (format t "~%")
            (draw-box x (- y 1)))))
+
+;;; Ex 9.4
+;;; Write a recursive function NINETY-NINE-BOTTLES that sings the well-known song "Ninety-nine Bottles of Beer on the Wall." The first verse of this song is:
+;;; 99 bottles of beer on the wall,
+;;; 99 bottles of beer!
+;;; Take one down,
+;;; Pass it around,
+;;; 98 bottles of beer on the wall.
+;;; NINETY-NINE-BOTTLES should take a number N as input and start counting from N down to zero. (This is so you can run it on three bottles instead of all ninety nine.)
+;;; Your function should also leave a blank line between each verse, and say something appropriate when it runs out of beer.
+(defun ninety-nine-bottles (n)
+  (cond ((zerop n) (format t "~%~S bottles of beer on the wall." n))
+        (t (format t "~&~S bottles of beer on the wall," n)
+           (format t "~&~S bottles of beer!" n)
+           (format t "~&Take one down,")
+           (format t "~&Pass it around,")
+           (ninety-nine-bottles (- n 1)))))
