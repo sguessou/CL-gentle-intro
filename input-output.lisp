@@ -124,3 +124,20 @@ NIL
            (format t "~&Thank you!...Munch munch munch...BURP"))
           (t (format t "~&No want ~A..." cookie) 
              (cookie-monster)))))
+
+;;; Ex 9.10
+;;; As you write each of the following functions, test it by calling it from top level with appropriate inputs before proceeding on to the next function.
+;;; a.
+;;; Write a recursive function SPACE-OVER that takes a number N as input and moves the cursor to the right by printing N spaces, one at a time.
+;;; SPACE should print "Error!" if N is negative.
+;;; Test it by using the function TEST. Try (TEST 5) and (TEST -5).
+(defun test (n)
+  (format t "~%>>>")
+  (space-over n)
+  (format t "<<<"))
+
+(defun space-over (n)
+  (cond ((zerop n) nil)
+        ((< n 0) (format t "Error!"))
+        (t (format t " ")
+           (space-over (- n 1)))))
