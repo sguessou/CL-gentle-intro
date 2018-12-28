@@ -195,6 +195,8 @@ NIL
           (plot-points plotting-string 
                        (mapcar #'(lambda (x) (funcall func x)) (generate start end))))))))  
 
+;;; f.
+;;; Define the SQUARE function and graph it over the range -7 to 7.
 (defun square (x)
   (* x x))
 
