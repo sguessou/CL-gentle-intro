@@ -179,4 +179,25 @@ NIL
 (defun generate-helper (m n result)
   (cond ((> m n) result)
         (t (generate-helper (+ m 1) n (append result (list m))))))
-  
+
+;;; e.
+;;; Write the MAKE-GRAPH function. MAKE-GRAPH should prompt for the values of FUNC, StART, END, and PLOTTING-STRING, and then graph the function.
+;;; Note: You can pass FUNC as an input to MAPCAR to generate the list of y values for the function.
+(defun make-graph ()
+  (format t "~&Function to graph?     ")
+  (let ((func (read)))
+    (format t "~&Starting x value?    ")
+    (let ((start (read)))
+      (format t "~&Ending x value?    ")
+      (let ((end (read)))
+        (format t "~&Plotting string? ")
+        (let ((plotting-string (read)))
+          (plot-points plotting-string 
+                       (mapcar #'(lambda (x) (funcall func x)) (generate start end))))))))  
+
+(defun square (x)
+  (* x x))
+
+
+
+
