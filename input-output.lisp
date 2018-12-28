@@ -169,4 +169,14 @@ NIL
 
 (defun plot-points (str l)
   (mapcar #'(lambda (x) (plot-one-point str x)) l))
+
+;;; d.
+;;; Write a function GENERATE that takes two numbers M and N as input and returns a list of the integers from M to N.
+;;; (GENERATE -3 3) should return (-3 -2 -1 0 1 2 3).
+(defun generate (m n)
+  (generate-helper m n nil))
+
+(defun generate-helper (m n result)
+  (cond ((> m n) result)
+        (t (generate-helper (+ m 1) n (append result (list m))))))
   
