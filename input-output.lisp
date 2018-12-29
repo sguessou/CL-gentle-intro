@@ -200,6 +200,16 @@ NIL
 (defun square (x)
   (* x x))
 
-
-
+;;; Ex 9.11
+;;; Write a function DOT-PRIN1 that takes a list as input and prints it in dot notation. DOT-PRIN1 will print parentheses by (FORMAT T "(") and (FORMAT T ")"), and dots by (FORMAT T " . "), and will call itself recursively to print lists within lists.
+;;; DOT-PRIN1 should return NIL as its result. 
+;;; Try (DOT-PRIN1 '(A (B) C)) and see if your output matches the result in the table above.
+;;; Then try (DOT-PRIN1 '((((A))))).
+(defun dot-prin1 (l)
+  (cond ((atom l) (format t "~S" l))
+        (t (format t "(")
+           (dot-prin1 (car l))
+           (format t " . ")
+           (dot-prin1 (cdr l))
+           (format t ")"))))
 
