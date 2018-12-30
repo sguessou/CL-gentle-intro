@@ -213,3 +213,24 @@ NIL
            (dot-prin1 (cdr l))
            (format t ")"))))
 
+;;; Ex 9.12
+;;; Write HYBRID-PRIN1. Here is how the function should decide whether to print a dot or not. If the cdr part of the cons cell is a list, HYBRID-PRIN1 continues to print in list notation. 
+;;; If the cdr part is NIL, HYBRID-PRIN1 should print a right parenthesis.
+;;; If the cdr part is something else, such as a symbol, HYBRID-PRIN1 should print a dot, the symbol, and a right parenthesis.
+;;; It will be useful to define a subfunction to print cdrs of lists, as these always begin with a space, whereas the cars always begin with a left parenthesis.
+(defun hybrid-prin1 (l)
+  (cond ((atom l) (format t "~S" l))
+        (t (hp-car (car l))
+           (hp-cdr (cdr l)))))
+
+(defun hp-car (l)
+  (format t "(")
+  (hybrid-prin1 l))
+
+(defun hp-cdr (l)
+  (cond ((null l) (format t ")"))
+        ((atom l) (format t " . ~S)" l))
+        (t (format t " ")
+           (hybrid-prin1 (car l))
+           (hp-cdr (cdr l)))))
+
