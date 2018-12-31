@@ -44,3 +44,10 @@
         (t (push person *friends*)
            'please-to-meet-you)))
 
+;;; Ex 10.4 
+;;; Write a function FORGET that removes a person from the *FRIENDS* list.
+;;; If the person wasn't on the list in the first place, the function should complain.
+(defun forget (person)
+  (cond ((member person *friends*) (remove person *friends*))
+        (t (format t "~&You haven't met ~S yet!" person))))
+
