@@ -19,3 +19,28 @@
   (format t 
           "~&That makes ~S glasses so far today."
           *total-glasses*))
+
+;;; Ex 10.3
+;;; Modify the MEET function to keep a count of how many people have been met more than once. Store this count in a global variable.
+
+(setf *friends* nil)
+
+(defun meet (person)
+  (cond ((equal person (first *friends*))
+         'we-just-met)
+        ((member person *friends*)
+         'we-know-each-other)
+        (t (push person *friends*)
+           'please-to-meet-you)))
+
+(setf *meet-cnt* 0)
+
+(defun meet (person)
+  (cond ((equal person (first *friends*))
+         'we-just-met)
+        ((member person *friends*)
+         (+ *meet-cnt* 1)
+         'we-know-each-other)
+        (t (push person *friends*)
+           'please-to-meet-you)))
+
