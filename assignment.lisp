@@ -198,3 +198,11 @@
                (zerop (nth pos board)))
            squares))
 
+;;; Ex 10.8
+;;; a.
+;;; Set up a global variable named *CORNERS* to hold a list of the four corner positions. Set up a global variable named *SIDES* to hold a list of the four side squares.
+;;; Note that (FIND-EMPTY-POSITION BOARD *SIDES*) will return an empty side square, if there are any.
+(setf *corners* '(1 3 7 9))
+
+(setf *sides* '(2 4 6 8))
+
