@@ -202,7 +202,39 @@
 ;;; a.
 ;;; Set up a global variable named *CORNERS* to hold a list of the four corner positions. Set up a global variable named *SIDES* to hold a list of the four side squares.
 ;;; Note that (FIND-EMPTY-POSITION BOARD *SIDES*) will return an empty side square, if there are any.
-(setf *corners* '(1 3 7 9))
+(setf *corners* '((1 9) (3 7)))
 
 (setf *sides* '(2 4 6 8))
 
+;;; b.
+;;; Write a function BLOCK-SQUEEZE-PLAY that checks the diagonals for an O-X-O pattern and defends by suggesting a side square as the best move.
+;;; Your function should return NIL if there is no squeeze play in progress.
+;;; Otherwise, it should return a list containing a move number and a string explaining the strategy behind the move.
+;;; Test the function by calling it on a sample board.
+(defun block-squeeze-play (board)
+  (let ((pos (block-squeeze-suggest-play board
+              (+ (* 2 *opponent*) *computer*))))
+    pos))
+
+(defun block-squeeze-suggest-play (board target-sum)
+  (let ((corner (find-if
+                  #'(lambda (corner)
+                      (equal (sum-corner board corner)
+                             target-sum))
+                  *corners*)))
+    (when corner
+      (let ((pos (find-empty-side board)))
+        (when pos
+          (make-move *computer* pos board))))))
+
+(defun sum-corner (board corner)
+  (+ (nth (first corner) board)
+     (nth (second corner) board)
+     *computer*))
+
+(defun find-empty-side (board)
+  (find-if #'(lambda (pos)
+               (zerop (nth pos board)))
+           *sides*))
+
+ 
