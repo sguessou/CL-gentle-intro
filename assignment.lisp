@@ -224,8 +224,7 @@
                   *corners*)))
     (when corner
       (let ((pos (find-empty-side board)))
-        (when pos
-          (make-move *computer* pos board))))))
+        (and pos (list pos "block squeeze play"))))))))
 
 (defun sum-corner (board corner)
   (+ (nth (first corner) board)
