@@ -236,4 +236,11 @@
                (zerop (nth pos board)))
            *sides*))
 
+;;; c.
+;;; Write a function BLOCK-TWO-ON-ONE that checks the diagonals for an O-O-X or X-O-O pattern and defends by suggesting a corner as the best move. 
+;;; Your function should return NIL if there is no two-on-one threat to which to respond. Otherwise, it should return a list containing a move and a strategy description.
+(defun block-two-on-one (board)
+ (let ((pos (block-two-on-one-play board
+				   (+ (* 2 *opponent*) *computer*))))
+       pos))
  
