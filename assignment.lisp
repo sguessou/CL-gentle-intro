@@ -177,7 +177,6 @@
   (let ((pos (win-or-block board 
                            (* 2 *computer*))))
     (and pos (list pos "make three in a row"))))
-
 (defun block-opponent-win (board)
   (let ((pos (win-or-block board
                            (* 2 *opponent*))))
@@ -202,9 +201,11 @@
 ;;; a.
 ;;; Set up a global variable named *CORNERS* to hold a list of the four corner positions. Set up a global variable named *SIDES* to hold a list of the four side squares.
 ;;; Note that (FIND-EMPTY-POSITION BOARD *SIDES*) will return an empty side square, if there are any.
-(setf *corners* '((1 9) (3 7)))
+(setf *corners* '(1 3 7 9))
 
 (setf *sides* '(2 4 6 8))
+
+(setf *diagonals* '((1 5 9) (3 5 7)))
 
 ;;; b.
 ;;; Write a function BLOCK-SQUEEZE-PLAY that checks the diagonals for an O-X-O pattern and defends by suggesting a side square as the best move.
@@ -218,18 +219,13 @@
 
 (defun block-squeeze-suggest-play (board target-sum)
   (let ((corner (find-if
-                  #'(lambda (corner)
-                      (equal (sum-corner board corner)
+                 #'(lambda (diagonal)
+                      (equal (sum-diagonal board diagonal)
                              target-sum))
-                  *corners*)))
+                  *diagonals*)))
     (when corner
       (let ((pos (find-empty-side board)))
-        (and pos (list pos "block squeeze play"))))))))
-
-(defun sum-corner (board corner)
-  (+ (nth (first corner) board)
-     (nth (second corner) board)
-     *computer*))
+        (and pos (list pos "block squeeze play"))))))
 
 (defun find-empty-side (board)
   (find-if #'(lambda (pos)
@@ -243,4 +239,23 @@
  (let ((pos (block-two-on-one-play board
 				   (+ (* 2 *opponent*) *computer*))))
        pos))
- 
+
+(defun block-two-on-one-play (board target-sum)
+  (let ((diagonal (find-if
+                 #'(lambda (diagonal)
+                     (equal (sum-diagonal board diagonal)
+                            target-sum))
+                 *diagonals*)))
+    (when (diagonal
+           (let ((pos (find-empty-corner board)))
+             (and pos (list pos "block two on one play")))))))
+
+(defun sum-diagonal (board diagonal)
+  (+ (nth (first diagonal) board)
+     (nth (second diagonal) board)
+     (nth (third diagonal) board)))
+
+(defun find-empty-corner (board)
+  (find-if #'(lambda (pos)
+               (zerop (nth pos board)))
+           *corners*))
