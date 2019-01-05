@@ -259,3 +259,22 @@
   (find-if #'(lambda (pos)
                (zerop (nth pos board)))
            *corners*))
+
+;;; Alternative solution
+(defun block-squeeze-play (board)
+  (sq-and-2 board *computer* *sides* 12
+            "block squeeze play"))
+
+(defun sq-and-2 (board player pool v strategy)
+  (when (equal (nth 5 board) player)
+    (or (sq-helper board 1 9 v strategy pool)
+        (sq-helper board 3 7 v strategy pool))))
+
+(defun sq-helper (board c1 c2 val strategy pool)
+  (when (equal val (sum-triplet
+                    board
+                    (list c1 5 c2)))
+    (let ((pos (find-empty-position
+                board
+                (or pool (list c1 c2)))))
+      (and pos (list pol strategy)))))
