@@ -311,6 +311,15 @@
   (if (consp l) (setf (cdr l) nil))
   l)
 
+;;; Ex 10.10
+;;; Write a function NTACK that destructively tacks a symbol onto a list.
+;;; (NTACK '(FEE FIE FOE) 'FUM) should return (FEE FIE FOE FUM).
+(defun ntack (a b)
+  (cond ((null a) b)
+        (t (setf (cdr (last a)) (list b)))))
 
+;;; Alternative solution:
+(defun ntack (a b)
+  (nconc a (list b)))
 
 
