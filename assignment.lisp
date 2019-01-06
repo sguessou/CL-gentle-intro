@@ -280,5 +280,37 @@
       (and pos (list pos strategy)))))
 
 (defun block-two-on-one (board)
-  (sq-and-2 board *opponent* *corners* 12
-            "block two-on-one"))
+   (sq-and-2 board *opponent* *corners* 12
+             "block two-on-one"))
+
+;;; d.
+;;; Modify the CHOOSE-BEST-MOVE function so that it tries these two defensive strategies before choosing a move at random.
+(defun choose-best-move (board)
+  "First version"
+  (or (make-three-in-a-row board)
+      (block-opponent-win board)
+      (block-squeeze-play board)
+      (block-two-on-one board)
+      (random-move-strategy board)))
+
+;;; e.
+;;; If the computer goes first, then after the opponent's first move there may be an opportunity for the computer to set up a squeeze play or two-on-one situation to trap the opponent.
+;;; Write functions to check the diagonals and suggest an appropriate attack if the opportunity exists. Modify the CHOOSE-BEST-MOVE function to include these offensive strategies in its list of things to try.
+(defun try-squeeze-play (board)
+  (sq-and-2 board *opponent* nil 11
+            "set up a squeeze play"))
+
+(defun try-two-on-one (board)
+  (sq-and-2 board *computer* nil 11
+            "set up a two-on-one"))
+
+;;; Ex 10.9
+;;; Write a destructive function CHOP that shortens any non-NIL list to a list of one element.
+;;; (CHOP '(FEE FIE FOE FUM)) should return (FEE).
+(defun chop (l)
+  (if (consp l) (setf (cdr l) nil))
+  l)
+
+
+
+
