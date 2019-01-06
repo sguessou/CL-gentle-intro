@@ -260,7 +260,7 @@
                (zerop (nth pos board)))
            *corners*))
 
-;;; Alternative solution
+;;; Alternative solution for block-squeeze-play and block-two-on-one.
 (defun block-squeeze-play (board)
   (sq-and-2 board *computer* *sides* 12
             "block squeeze play"))
@@ -277,4 +277,8 @@
     (let ((pos (find-empty-position
                 board
                 (or pool (list c1 c2)))))
-      (and pos (list pol strategy)))))
+      (and pos (list pos strategy)))))
+
+(defun block-two-on-one (board)
+  (sq-and-2 board *opponent* *corners* 12
+            "block two-on-one"))
