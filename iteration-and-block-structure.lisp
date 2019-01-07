@@ -30,3 +30,11 @@
         ((not (oddp (car x))) nil)
         (t (format t "~&Checking ~S..." (car x)) 
            (check-all-odd (rest x)))))
+
+;;; Recursive version with unless
+(defun check-all-odd (x)
+  (cond ((null x) t)
+        (t (format t "~&Checking ~S..."
+                   (first x))
+           (unless (evenp (first x))
+             (check-all-odd (rest x))))))
