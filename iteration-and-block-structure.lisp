@@ -38,3 +38,11 @@
                    (first x))
            (unless (evenp (first x))
              (check-all-odd (rest x))))))
+
+;;; Ex 11.4
+;;; Write an iterative version of LENGTH, called IT-LENGTH.
+(defun it-length (x)
+  (let ((c 0))
+    (dolist (element x c)
+      (setf c (+ c 1)))
+    c))
