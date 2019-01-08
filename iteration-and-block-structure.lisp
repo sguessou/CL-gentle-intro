@@ -44,8 +44,7 @@
 (defun it-length (x)
   (let ((c 0))
     (dolist (element x c)
-      (setf c (+ c 1)))
-    c))
+      (incf c))))
 
 ;;; Ex 11.5
 ;;; Write an iterative version of NTH, called IT-NTH.
@@ -55,7 +54,12 @@
       (if (or (< i 0) (>= i (length x))) (return nil))
       (if (equal c i)
           (return element))
-      (setf c (+ c 1)))))
+      (incf c))))
+
+;;; alternative solution
+(defun it-nth (n x)
+  (dotimes (i n (first x))
+      (pop x)))
 
 ;;; Ex 11.6
 ;;; Write an iterative version of UNION, called IT-UNION. Your function need not return its result in the same order as the built-in UNION function.
@@ -65,3 +69,10 @@
     (if (not (member element l))
         (push element l)))
     l))
+
+;;; alternative solution
+(defun it-union (x y)
+  (dolist (e x y)
+    (unless (member e y)
+      (push e y))))
+
