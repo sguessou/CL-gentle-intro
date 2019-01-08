@@ -82,3 +82,11 @@
   (let ((l '()))
      (dolist (element x l)
        (push element l))))
+
+;;; Ex 11.9
+;;; Show how to write CHECK-ALL-ODD using DO.
+(defun check-all-odd (x)
+  (do ((my-x x (rest my-x)))
+      ((null my-x) (return t))
+    (if (not (oddp (first my-x))) (return nil))
+    (format t "~&Checking ~S..." (first my-x))))
