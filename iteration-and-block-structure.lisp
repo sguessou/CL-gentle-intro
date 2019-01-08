@@ -90,3 +90,9 @@
       ((null my-x) (return t))
     (if (not (oddp (first my-x))) (return nil))
     (format t "~&Checking ~S..." (first my-x))))
+
+;;; Ex 11.10
+;;; Show how to write LAUNCH using DOTIMES.
+(defun launch (n)
+  (dotimes (i n (format t "Blast off!"))
+     (format t "~S..." (- n i))))
