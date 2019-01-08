@@ -46,3 +46,13 @@
     (dolist (element x c)
       (setf c (+ c 1)))
     c))
+
+;;; Ex 11.5
+;;; Write an iterative version of NTH, called IT-NTH.
+(defun it-nth (i x)
+  (let ((c 0))
+    (dolist (element x c)
+      (if (or (< i 0) (>= i (length x))) (return nil))
+      (if (equal c i)
+          (return element))
+      (setf c (+ c 1)))))
