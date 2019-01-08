@@ -76,3 +76,9 @@
     (unless (member e y)
       (push e y))))
 
+;;; Ex 11.8
+;;; Write an iterative version of REVERSE, called IT-REVERSE.
+(defun it-reverse (x)
+  (let ((l '()))
+     (dolist (element x l)
+       (push element l))))
