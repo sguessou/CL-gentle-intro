@@ -56,3 +56,12 @@
       (if (equal c i)
           (return element))
       (setf c (+ c 1)))))
+
+;;; Ex 11.6
+;;; Write an iterative version of UNION, called IT-UNION. Your function need not return its result in the same order as the built-in UNION function.
+(defun it-union (a b)
+  (let ((l b))
+    (dolist (element a)
+    (if (not (member element l))
+        (push element l)))
+    l))
