@@ -112,3 +112,22 @@
        ((null x) largest)
     (when (> y largest)
     (setf largest y))))
+
+;;; 11.12
+;;; Rewrite the following function to use DO instead of DOTIMES.
+(defun power-of-2 (n)
+  (let ((result 1))
+    (dotimes (i n result)
+      (incf result result)))) 
+
+(defun power-of-2 (n)
+  (do ((x 0 (+ x 1))
+       (result 1))
+      ((equal x n) result)
+    (setf result (incf result result))))
+
+;;; alternative solution
+(defun power-of-2 (n)
+  (do ((result 1 (+ result result))
+       (i 0 (+ i 1)))
+      ((equal i n) result)))
