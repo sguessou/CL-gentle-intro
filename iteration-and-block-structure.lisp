@@ -96,3 +96,19 @@
 (defun launch (n)
   (dotimes (i n (format t "Blast off!"))
      (format t "~S..." (- n i))))
+
+;;; 11.11
+;;; Rewrite the following function to use DO* instead of DOLIST.
+(defun find-largest (list-of-numbers)
+  (let ((largest (first list-of-numbers)))
+    (dolist (element (rest list-of-numbers) largest)
+      (when (> element largest)
+        (setf largest element)))))
+
+(defun find-largest (list-of-numbers)
+  (do* ((x list-of-numbers (rest x))
+        (y (first x) (first x))
+        (largest y))
+       ((null x) largest)
+    (when (> y largest)
+    (setf largest y))))
