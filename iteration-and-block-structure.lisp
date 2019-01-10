@@ -147,3 +147,10 @@
       (unless (integerp e)
         (return e))))
 
+;;; Ex 11.15
+;;; corrected version
+(defun ffo-with-do (x)
+  (do* ((z x (rest z))
+       (e (first z) (first z)))
+      ((null z) nil)
+    (if (oddp e) (return e))))
