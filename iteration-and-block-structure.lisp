@@ -131,3 +131,19 @@
   (do ((result 1 (+ result result))
        (i 0 (+ i 1)))
       ((equal i n) result)))
+
+;;; Ex 11.13
+;;; Rewrite the following function using DOLIST instead of DO*.
+(defun first-non-integer (x)
+  "Return the first non-integer element of X."
+  (do* ((z x (rest z))
+        (z1 (first z) (first z)))
+       ((null z) 'none)
+    (unless (integerp z1)
+      (return z1))))
+
+(defun first-non-integer (x)
+  (dolist (e x 'none)
+      (unless (integerp e)
+        (return e))))
+
