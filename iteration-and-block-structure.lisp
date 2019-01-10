@@ -147,6 +147,12 @@
       (unless (integerp e)
         (return e))))
 
+;;; alternative version
+(defun first-non-integer (x)
+  (dolist (e x 'none)
+    (when (not (integerp e))
+      (return e))))
+
 ;;; Ex 11.15
 ;;; corrected version
 (defun ffo-with-do (x)
@@ -154,3 +160,4 @@
        (e (first z) (first z)))
       ((null z) nil)
     (if (oddp e) (return e))))
+
