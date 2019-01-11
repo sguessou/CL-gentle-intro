@@ -161,3 +161,13 @@
       ((null z) nil)
     (if (oddp e) (return e))))
 
+;;; Ex 11.18
+;;; Rewrite the DOTIMES expression using DO.
+(defun f ()
+ (dotimes (i 5 i)
+        (format t "~&I = ~S" i)))
+
+(defun f ()
+  (do ((i 0 (+ i 1)))
+      ((equal i 5) i)
+    (format t "~&I = ~S" i)))
