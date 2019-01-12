@@ -171,3 +171,20 @@
   (do ((i 0 (+ i 1)))
       ((equal i 5) i)
     (format t "~&I = ~S" i)))
+
+;;; Ex 11.21
+;;; One way to compute Fib(5) is to start with Fib(0) and Fib(1), which we know to be one, and add them together, giving Fib(2).
+;;; Then add Fib(1) and Fib(2) to get Fib(3). Add Fib(2) and Fib(3) to get Fib(4).
+;;; Add Fib(3) and Fib(4) to get Fib(5).
+;;; This is an iterative method involving no recursion; we merely have to keep around the last two values of Fib to compute the next one.
+;;; Write an iterative version of FIB using this technique.
+(defun fib (n)
+  (cond ((or (zerop n) (equal n 1)) 1)
+        (t (+ (fib (- n 1)) (fib (- n 2))))))
+
+(defun fib (n)
+  (do* ((i n (- i 1))   
+        (a 0 b) 
+        (b 1 c)
+        (c 1 (+ a b)))
+      ((zerop i) a)))
