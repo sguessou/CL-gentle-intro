@@ -228,3 +228,24 @@
     (push (list (first l)
                 (complement-base (first l)))
           result)))
+
+;;; d.
+;;; One of the important clues to DNA's double-stranded nature was the observation that in naturally occuring DNA, whether from people, animals, or plants, the observed percentage of adenine is always very close to that of thymine, while the observed percentage of guanine is very close to that of cytosine.
+;;; Write a function COUNT-BASES that counts the number of bases of each type in a DNA strand, and returns the result as a table.
+;;; Your function should work for both single- and double-stranded DNA.
+;;; Example: (COUNT-BASES '((G C) (A T) (T A) (T A) (C G))) should return ((A 3) (T 3) (G 2) (C 2)),
+;;; whereas (COUNT-BASES '(A G T A C T C T)) should return ((A 2) (T 3) (G 1) (C 2)).
+;;; In the latter case the percentages are not equal because we are working with only a single strand.
+;;; What answer do you get if you apply COUNT-BASES to the corresponding double-stranded sequence?
+(defun flatten (x)
+  (cond ((null x) nil)
+        ((atom x) (list x))
+        (t (append (flatten (first x)) (flatten (rest x))))))
+
+(defun count-bases (strand)
+  (let ((l (if (listp (first strand))
+               (flatten strand)
+               strand)))
+    (do* ((element l (rest element))
+         (a 0 (when (equal (first element) 'a) (+ a 1))))
+        ((null element) (list a)))))
