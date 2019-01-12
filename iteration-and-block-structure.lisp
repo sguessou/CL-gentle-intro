@@ -199,8 +199,19 @@
         ((equal b 't) 'a)
         ((equal b 'c) 'g)))
 
+;;; alternative solution
+(defun complement-base (base)
+  (second 
+   (assoc base '((a t) (t a) (g c) (c g)))))
+
 ;;; b.
 ;;; Write a function COMPLEMENT-STRAND that returns the complementary strand of a sequence of single-stranded DNA.
 ;;; (COMPLEMENT-STRAND '(A G G T)) should return (T C C A).
 (defun complement-strand (s)
   (mapcar #'complement-base s))
+
+;;; c.
+;;; Write a function MAKE-DOUBLE that takes a single strand of DNA as input and returns a double-stranded version.
+;;; We will represent double-stranded DNA by making a list of each base and its complement.
+;;; (MAKE-DOUBLE '(G G A C T)) should return ((G C) (G C) (A T) (C G) (T A)).
+(defun make-double)
