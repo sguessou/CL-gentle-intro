@@ -199,3 +199,8 @@
         ((equal b 't) 'a)
         ((equal b 'c) 'g)))
 
+;;; b.
+;;; Write a function COMPLEMENT-STRAND that returns the complementary strand of a sequence of single-stranded DNA.
+;;; (COMPLEMENT-STRAND '(A G G T)) should return (T C C A).
+(defun complement-strand (s)
+  (mapcar #'complement-base s))
