@@ -188,3 +188,14 @@
         (b 1 c)
         (c 1 (+ a b)))
       ((zerop i) a)))
+
+;;; Ex 11.22
+;;; a.
+;;; Write a function COMPLEMENT-BASE that takes a base as input and returns the matching complementary base.
+;;; (COMPLEMENT-BASE 'A) should return T; (COMPLEMENT-BASE 'T) should return A; and so on.
+(defun complement-base (b)
+  (cond ((equal b 'a) 't)
+        ((equal b 'g) 'c)
+        ((equal b 't) 'a)
+        ((equal b 'c) 'g)))
+
