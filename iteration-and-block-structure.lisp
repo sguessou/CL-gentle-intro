@@ -221,4 +221,10 @@
 ;;; Write a function MAKE-DOUBLE that takes a single strand of DNA as input and returns a double-stranded version.
 ;;; We will represent double-stranded DNA by making a list of each base and its complement.
 ;;; (MAKE-DOUBLE '(G G A C T)) should return ((G C) (G C) (A T) (C G) (T A)).
-(defun make-double)
+(defun make-double (strand)
+  (do ((result nil)
+       (l strand (rest l)))
+      ((null l) (reverse result))
+    (push (list (first l)
+                (complement-base (first l)))
+          result)))
