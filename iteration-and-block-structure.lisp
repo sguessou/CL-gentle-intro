@@ -210,6 +210,13 @@
 (defun complement-strand (s)
   (mapcar #'complement-base s))
 
+;;; iterative solution
+(defun complement-strand (s)
+  (do ((result nil) 
+       (l s (rest l)))
+      ((null l) (reverse result))
+    (push (complement-base (first l)) result)))
+
 ;;; c.
 ;;; Write a function MAKE-DOUBLE that takes a single strand of DNA as input and returns a double-stranded version.
 ;;; We will represent double-stranded DNA by making a list of each base and its complement.
