@@ -290,4 +290,11 @@
                         (first c2)))
       (return nil))))
 
-
+;;; f.
+;;; Write a predicate APPEARSP that returns T if one DNA strand appears anywhere within another. For example, (C A T) appears in (T C A T G) but not in (T C C G T A).
+;;; Hint: If x appears in y, then x is eather a prefix of y, or of (REST y), or of (REST (REST y)), and so on.
+(defun appearsp (a b)
+  (do ((l b (rest l)))
+      ((null l) nil)
+    (if (prefixp a l)
+        (return t))))
