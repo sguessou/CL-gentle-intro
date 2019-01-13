@@ -262,3 +262,24 @@
      (list 'g g)
      (list 't tt))))
 
+;;; Alternative solution
+(defun count-bases (dna)
+  (let ((acnt 0) (tcnt 0) (gcnt 0) (ccnt 0))
+    (labels ((count-one-base (base)
+               (cond ((equal base 'a) (incf acnt))
+                     ((equal base 't) (incf tcnt))
+                     ((equal base 'g) (incf gcnt))
+                     ((equal base 'c) (incf ccnt)))))
+      (dolist (element dna)
+        (cond ((atom element) (count-one-base element))
+              (t (count-one-base (first element))
+                 (count-one-base (second element)))))
+      (list (list 'a acnt)
+            (list 't tcnt)
+            (list 'g gcnt)
+            (list 'c ccnt)))))
+
+;;; e.
+;;; Write a predicate PREFIXP that returns T if one strand of DNA is a prefix of another.
+;;; To be a prefix, the elements of the first strand must exactly match the corresponding elements of the second, which may be longer. Example: (G T C) is a prefix of (G T C A T), but not of (A G G T C).
+
