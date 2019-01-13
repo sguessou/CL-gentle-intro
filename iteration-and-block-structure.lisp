@@ -282,4 +282,12 @@
 ;;; e.
 ;;; Write a predicate PREFIXP that returns T if one strand of DNA is a prefix of another.
 ;;; To be a prefix, the elements of the first strand must exactly match the corresponding elements of the second, which may be longer. Example: (G T C) is a prefix of (G T C A T), but not of (A G G T C).
+(defun prefixp (s1 s2)
+  (do ((c1 s1 (rest c1))
+       (c2 s2 (rest c2)))
+      ((null c1) t)
+    (when (not (equal (first c1)
+                        (first c2)))
+      (return nil))))
+
 
