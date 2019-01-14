@@ -308,3 +308,13 @@
       ((null l) t)
     (when (not (prefixp a l))
       (return nil))))
+
+;;; Write a function PREFIX that returns the leftmost N bases of a DNA strand.
+;;; (PREFIX 4 '(C G A T T A G)) should return (C G A T).
+;;; Do not confuse the function PREFIX with the predicate PREFIXP.
+(defun prefix (n l)
+  (do ((cnt 0 (+ cnt 1))
+       (buf l (rest buf))
+       (result nil))
+      ((equal cnt n) (reverse result))
+    (push (first buf) result)))
