@@ -309,6 +309,7 @@
     (when (not (prefixp a l))
       (return nil))))
 
+;;; h.
 ;;; Write a function PREFIX that returns the leftmost N bases of a DNA strand.
 ;;; (PREFIX 4 '(C G A T T A G)) should return (C G A T).
 ;;; Do not confuse the function PREFIX with the predicate PREFIXP.
@@ -318,3 +319,18 @@
        (result nil))
       ((equal cnt n) (reverse result))
     (push (first buf) result)))
+
+;;; i.
+;;; Biologists have found that portions of some naturally occuring DNA strands consist of many repetitions of a short "kernel" sequence.
+;;; Write a function KERNEL that returns the shortest prefix of a DNA strand that can be repeated to cover the strand.
+;;; (KERNEL '(A G C A G C A G C)) should return (A G C).
+;;; (KERNEL '(A A A A A)) should return (A).
+;;; (KERNEL '(A G G T C)) should return (A G G T C), because in this case only a single repetition of the entire strand will cover the strand.
+;;; Hint: To find the kernel, look at prefixes of increasing length until you find one that can be repeated to cover the strand.
+(defun kernel (l)
+  (do* ((len (length l))
+        (cnt 1 (+ cnt 1))
+        (pref (prefix cnt l) (prefix cnt l)))
+       ((equal len cnt) l)
+    (when (coverp pref l)
+      (return pref))))
