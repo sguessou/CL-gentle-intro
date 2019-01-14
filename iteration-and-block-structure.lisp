@@ -298,3 +298,13 @@
       ((null l) nil)
     (if (prefixp a l)
         (return t))))
+
+;;; g.
+;;; Write a predicate COVERP that returns T if its first input, repeated some number of times, matches all of its second input.
+;;; Example: (A G C) covers (A G C A G C A G C) but not (A G C T T G).
+;;; You may assume that neither strand will be null.
+(defun coverp (a b)
+  (do ((l b (subseq l (length a))))
+      ((null l) t)
+    (when (not (prefixp a l))
+      (return nil))))
