@@ -309,6 +309,14 @@
     (when (not (prefixp a l))
       (return nil))))
 
+;;; alternative solution 
+(defun coverp (strand1 strand2)
+  (do* ((len1 (length strand1))
+        (s2 strand2 (nthcdr len1 s2)))
+       ((null s2) t)
+    (unless (prefixp strand1 s2)
+      (return nil))))
+
 ;;; h.
 ;;; Write a function PREFIX that returns the leftmost N bases of a DNA strand.
 ;;; (PREFIX 4 '(C G A T T A G)) should return (C G A T).
@@ -361,3 +369,5 @@
   (draw-helper (length strand) "  !  ")
   (format t "~&")
   (draw-helper (length strand) "-----"))
+
+   
