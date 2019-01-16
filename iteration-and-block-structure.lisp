@@ -328,6 +328,12 @@
       ((equal cnt n) (reverse result))
     (push (first buf) result)))
 
+;;; alternative solution
+(defun prefix (n strand)
+  (do ((i 0 (+ i 1))
+       (res nil (cons (nth i strand) res)))
+      ((equal i n) (reverse res))))
+
 ;;; i.
 ;;; Biologists have found that portions of some naturally occuring DNA strands consist of many repetitions of a short "kernel" sequence.
 ;;; Write a function KERNEL that returns the shortest prefix of a DNA strand that can be repeated to cover the strand.
