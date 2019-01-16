@@ -382,4 +382,4 @@
   (format t "~&")
   (draw-helper (length strand) "-----"))
 
-   
+

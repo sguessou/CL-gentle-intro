@@ -13,4 +13,5 @@
 * Chapter  9 - **Input/Output**
 * Chapter 10 - **Assignment**
 * Chapter 11 - **Iteration and Block Structure**
+* Chapter 12 - **Structures and The Type System**
 
