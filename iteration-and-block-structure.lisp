@@ -349,6 +349,12 @@
     (when (coverp pref l)
       (return pref))))
 
+;;; alternative solution
+(defun kernel (strand)
+  (do ((i 1 (+ i 1)))
+      ((coverp (prefix i strand) strand)
+       (prefix i strand))))
+
 ;;; j.
 ;;; Write a function DRAW-DNA that takes a single-stranded DNA sequence as input and draws it along with its complementary strand, as in the diagram at the beginning of this exercise.
 (defun draw-helper (c str)
