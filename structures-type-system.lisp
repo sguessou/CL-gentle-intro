@@ -12,3 +12,11 @@
   (question nil)
   (yes-case nil)
   (no-case nil))
+
+;;; b.
+;;; Define a global variable *NODE-LIST* that will hold all the nodes in the discrimination net. Write a function INIT that initializes the network by setting *NODE-LIST* to NIL.
+(setf *NODE-LIST* nil)
+
+(defun init ()
+  (setf *NODE-LIST* nil))
+
