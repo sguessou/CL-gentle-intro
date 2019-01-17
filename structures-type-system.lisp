@@ -20,3 +20,13 @@
 (defun init ()
   (setf *NODE-LIST* nil))
 
+;;; c.
+;;; Write ADD-NODE. It should return the name of the node it added.
+(defun add-node (s1 q1 q2 s2)
+  (make-node :name s1
+             :question q1
+             :yes-case q2
+             :no-case s2)
+  s1)
+
+
