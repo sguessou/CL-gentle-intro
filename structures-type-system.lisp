@@ -37,6 +37,7 @@
     (when (equal name (node-name n))
       (return n))))
 
+;;; e.
 ;;; Write PROCESS-NODE. It takes a node name as input. If it can't find the node, it prints a message that the node hasn't been defined yet, and returns NIL. 
 ;;; Otherwise it asks the user the question associated with that node, and then returns the node's yes action or no action depending on how the user responds.
 (defun process-node (name)
@@ -50,3 +51,12 @@
                      ((equal ans 'no) (node-no-case n))
                      (t (process-node name))))))))
 
+;;; f.
+;;; Write the function RUN. It maintains a local variable named CURRENT-NODE, whose initial value is START.
+;;; It loops, calling PROCESS-NODE to process the current node, and storing the value returned by PROCESS-NODE back into CURRENT-NODE.
+;;; If the value returned is a string, the function prints the string and stops. If the value returned is NIL, it also stops.
+(defun run ()
+  (do ((current-node 'start (process-node current-node)))
+      ((or (stringp current-node)
+           (null current-node))
+       (format t "~&~A" current-node))))
