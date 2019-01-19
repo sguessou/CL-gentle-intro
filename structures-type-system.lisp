@@ -50,6 +50,17 @@
                (cond ((equal ans 'yes) (node-yes-case n))
                      ((equal ans 'no) (node-no-case n))
                      (t (process-node name))))))))
+ 
+;;; alternative solution
+(defun process-node (name)
+  (let ((nd (find-node name)))
+    (if nd
+        (if (y-or-n-p "~&~A "
+                      (node-question nd))
+            (node-yes-case nd)
+            (node-no-case nd))
+        (format t
+                "~&Node ~S not yet defined." name))))
 
 ;;; f.
 ;;; Write the function RUN. It maintains a local variable named CURRENT-NODE, whose initial value is START.
@@ -60,3 +71,12 @@
       ((or (stringp current-node)
            (null current-node))
        (format t "~&~A" current-node))))
+
+;;; alternative solution
+(defun run ()
+  (do ((current-node 'start
+                     (process-node current-node)))
+      ((null current-node) nil)
+    (cond ((stringp current-node)
+           (format t "~&~A" current-node)
+           (return nil)))))
