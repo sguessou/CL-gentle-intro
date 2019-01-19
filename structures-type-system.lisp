@@ -80,3 +80,19 @@
     (cond ((stringp current-node)
            (format t "~&~A" current-node)
            (return nil)))))
+
+;;; g.
+;;; Write an interactive function to add a new node. It should prompt the user for the node name, the question, and the yes and no actions.
+;;; Remember that the question must be a string, enclosed in double quotes.
+;;; Your function should add the new node to the net.
+(defun get-node-data ()
+  (format t "~&Enter the node's name: ")
+  (let ((name (read)))
+    (format t "~&Enter the node's question: ")
+    (let ((question (read)))
+      (format t "~&Enter the yes action: ")
+      (let ((yes (read)))
+        (format t "~&Enter the no action: ")
+        (let ((no (read)))
+          (add-node name question yes no))))))
+
