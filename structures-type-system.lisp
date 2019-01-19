@@ -96,3 +96,19 @@
         (let ((no (read)))
           (add-node name question yes no))))))
 
+
+;;; Alternative solution
+(defun interactive-add ()
+  (let ((question nil)
+        (name nil)
+        (yes-case nil)
+        (no-case nil))
+    (format t "~&Name? ")
+    (setf name (read))
+    (format t "~&Question? ")
+    (setf question (read))
+    (format t "~&Yes action? ")
+    (setf yes (read))
+    (format t "~&No action? ")
+    (setf no (read))
+    (add-node name question yes no)))
