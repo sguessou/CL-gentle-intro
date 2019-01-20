@@ -112,3 +112,26 @@
     (format t "~&No action? ")
     (setf no (read))
     (add-node name question yes no)))
+
+;;; Ex 12.5
+;;; Create a defstruct for CAPTAIN with fields NAME, AGE, and SHIP.
+;;; Make a structure describing James T Kirk, captain of the Enterprise, age 35.
+;;; Make the Enterprise point back to Kirk through its CAPTAIN component.
+;;; Notice that when you print Kirk, you see his ship as well.
+;;; Now define a print function for CAPTAIN that displays only the name, such as #<CAPTAIN "James T. Kirk">.
+(defstruct (captain (:print-function print-captain))
+ (name nil)
+ (age nil)
+ (ship nil))
+
+(defun print-captain (x stream depth)
+  (format stream "#<CAPTAIN ~A>" 
+          (captain-name x)))
+
+(setf s1 (make-captain :name "James T Kirk"
+                       :age 35
+                       :ship "Enterprise"))
+
+
+
+
