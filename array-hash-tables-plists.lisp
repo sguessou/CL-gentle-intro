@@ -45,3 +45,11 @@
         (return (second p)))))
 
 
+;;; Ex 13.4
+;;; Write a predicate HASPROP that returns T or NIL to indicate whether a symbol has a particular property, independent of the value of that property.
+;;; Note: If symbol A has a property FOO with value NIL, (HASPROP 'A 'FOO) should still return T.
+(defun hasprop (symbol property)
+  (do ((p (symbol-plist symbol) (cddr p)))
+      ((null p) nil)
+    (if (equal property (first p))
+        (return t))))
