@@ -14,4 +14,5 @@
 * Chapter 10 - **Assignment**
 * Chapter 11 - **Iteration and Block Structure**
 * Chapter 12 - **Structures and The Type System**
+* Chapter 13 - **Arrays, Hash Tables, And Property Lists**
 
