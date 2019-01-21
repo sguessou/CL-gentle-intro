@@ -114,6 +114,22 @@
   (dotimes (i iterations)
     (record-value (random 11)))
   (dotimes (i 11)
-    (print-hist-line i)))
+    (print-hist-line i))
+  (format t "~&    ~3D total" *total-points*))
+
+;;; Ex 13.9
+;;; Set up the global variable CRYPTO-TEXT as shown. Then build the cryptogram-solv§ing tool by following these instruction:
+
+;;; a.
+;;; Each letter in the alphabet has a corresponding letter to which it deciphers, for example, P deciphers to A.
+;;; As we solve the cryptogram we will store this information in two hash tables called *ENCIPHER-TABLE* and *DECIPHER-TABLE*.
+;;; We will use *DECIPHER-TABLE* to print out the deciphered cryptogram.
+;;; We need *ENCIPHER-TABLE* to check for two letters being deciphered to the same thing, for example, if P is deciphered to A and then we tried to decipher K to A, a look at *ENCIPHER-TABLE* would reveal that A had already been assigned to P.
+;;; Similarly, if P is deciphered to A and then we tried deciphering P to E, a look at *DECIPHER-TABLE* would tell us that P had already been deciphered to A.
+;;; Write expressions to initialize these global variables.
+(setf *decipher-table* (make-hash-table))
+
+(setf *encipher-table* (make-hash-table))
+
 
 
