@@ -53,3 +53,20 @@
       ((null p) nil)
     (if (equal property (first p))
         (return t))))
+
+;;; Ex 13.8
+;;;  Follow the steps below to create a histogram-drawing program. Your functions should not assume that the histogram will have exactly eleven bins.
+;;; In other words, don't use eleven as a constant in you program; use (LENGTH *HIST-ARRAY*) instead.
+;;; That way your program will be able to generate histograms of any size.
+
+;;; a.
+;;; Write expressions to set up a global variable *HIST-ARRAY* that holds the array of counts, and a global variable *TOTAL-POINTS* that holds the number of points recorded so far.
+(setf *hist-array* nil)
+
+(defun create-array (n)
+  (setf *hist-array* 
+        (make-array n 
+                    :initial-element 0)))
+
+(setf *total-points* 0)
+
