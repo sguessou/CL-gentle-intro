@@ -88,5 +88,15 @@
                    (+ *total-points* 
                       (aref *hist-array* i)))))))
 
+;;; d.
+;;; Write a function PRINT-HIST-LINE that takes a value from zero to ten as input, looks up that value in the array, and prints the corresponding line of the histogram.
+;;; To get the numbers to line up in columns properly, you will need to use the format directives ~2S to display the value and ~3S to display the count. 
+;;; You can use a DOTIMES to print the asterisks.
+(defun print-hist-line (n)
+  (let ((cnt (aref *hist-array* n)))
+    (format t "~&~2S [~3S] " n cnt)
+    (dotimes (i cnt)
+      (format t "*"))))
+
 
 
