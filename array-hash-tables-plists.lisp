@@ -131,5 +131,15 @@
 
 (setf *encipher-table* (make-hash-table))
 
+;;; b.
+;;; Write a function MAKE-SUBSTITUTION that takes two character objects as input and stores the appropriate entries in *DECIPHER-TABLE* and *ENCIPHER-TABLE* so that the first letter deciphers to the second and the second letter enciphers to the first.
+;;; This function does not need to check if either letter already has an entry in these hash tables.
+(defun make-substitution (obj)
+  (setf (gethash (first obj) *decipher-table*)
+        (second obj))
+  (setf (gethash (second obj) *encipher-table*)
+        (first obj))
+  'ok)
+
 
 
