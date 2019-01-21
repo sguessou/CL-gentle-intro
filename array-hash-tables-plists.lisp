@@ -63,10 +63,17 @@
 ;;; Write expressions to set up a global variable *HIST-ARRAY* that holds the array of counts, and a global variable *TOTAL-POINTS* that holds the number of points recorded so far.
 (setf *hist-array* nil)
 
+(setf *total-points* nil)
+
+;;; b.
+;;; Write a function NEW-HISTOGRAM to initialize these variables appropriately.
+;;; It should take one input: the number of bins the histogram is to have. 
 (defun create-array (n)
+  (setf *total-points* 0)
   (setf *hist-array* 
         (make-array n 
                     :initial-element 0)))
 
-(setf *total-points* 0)
+
+
 
