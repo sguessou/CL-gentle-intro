@@ -68,12 +68,25 @@
 ;;; b.
 ;;; Write a function NEW-HISTOGRAM to initialize these variables appropriately.
 ;;; It should take one input: the number of bins the histogram is to have. 
-(defun create-array (n)
+(defun new-histogram (n)
   (setf *total-points* 0)
   (setf *hist-array* 
         (make-array n 
                     :initial-element 0)))
 
+;;; c.
+;;; Write the function RECORD-VALUE that takes a number as input.
+;;; If the number is between zero and ten, it should increment the appropriate element of the array, and also update *TOTAL-POINTS*.
+;;; If the input is out of range, RECORD-VALUE should issue an appropriate error message.
+(defun record-value (n)
+  (cond ((or (< n 0) (> n 10))
+         (format t "~&Number ~A is out of range." n))
+        (t (setf (aref *hist-array* n)
+                 (+ (aref *hist-array* n) 1))
+           (dotimes (i 11 *total-points*)
+             (setf *total-points* 
+                   (+ *total-points* 
+                      (aref *hist-array* i)))))))
 
 
 
