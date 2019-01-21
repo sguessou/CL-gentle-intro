@@ -139,7 +139,14 @@
         (second obj))
   (setf (gethash (second obj) *encipher-table*)
         (first obj))
-  'ok)
+  'make-substituion-ok)
 
-
+;;; c.
+;;; Write a function UNDO-SUBSTITUTION that takes one letter as input. 
+;;; It should set the *DECIPHER-TABLE* entry of that letter, and the *ENCIPHER-TABLE* entry of the letter it deciphered to, to NIL.
+(defun undo-substitution (l)
+  (let ((decipher-to (gethash l *decipher-table*)))
+    (setf (gethash l *decipher-table*) nil)
+    (setf (gethash decipher-to *encipher-table*) nil))
+  'undo-substituion-ok)
 
