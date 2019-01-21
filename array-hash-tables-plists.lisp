@@ -63,7 +63,7 @@
 ;;; Write expressions to set up a global variable *HIST-ARRAY* that holds the array of counts, and a global variable *TOTAL-POINTS* that holds the number of points recorded so far.
 (setf *hist-array* nil)
 
-(setf *total-points* nil)
+(setf *total-points* 0)
 
 ;;; b.
 ;;; Write a function NEW-HISTOGRAM to initialize these variables appropriately.
@@ -72,7 +72,8 @@
   (setf *total-points* 0)
   (setf *hist-array* 
         (make-array n 
-                    :initial-element 0)))
+                    :initial-element 0))
+  t)
 
 ;;; c.
 ;;; Write the function RECORD-VALUE that takes a number as input.
@@ -88,13 +89,21 @@
                    (+ *total-points* 
                       (aref *hist-array* i)))))))
 
+;;; Better alternative
+(defun record-value (v)
+  (incf *total-points*)
+  (if (and (>= v 0)
+           (< v (length *hist-array*)))
+      (incf (aref *hist-array* v))
+      (error "Value ~S out of bounds." v)))
+
 ;;; d.
 ;;; Write a function PRINT-HIST-LINE that takes a value from zero to ten as input, looks up that value in the array, and prints the corresponding line of the histogram.
 ;;; To get the numbers to line up in columns properly, you will need to use the format directives ~2S to display the value and ~3S to display the count. 
 ;;; You can use a DOTIMES to print the asterisks.
 (defun print-hist-line (n)
   (let ((cnt (aref *hist-array* n)))
-    (format t "~&~2S [~3S] " n cnt)
+    (format t "~&~2D [~3D] " n cnt)
     (dotimes (i cnt)
       (format t "*"))))
 
@@ -106,4 +115,5 @@
     (record-value (random 11)))
   (dotimes (i 11)
     (print-hist-line i)))
+
 
