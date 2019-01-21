@@ -98,5 +98,12 @@
     (dotimes (i cnt)
       (format t "*"))))
 
-
+;;; e.
+;;; Write the function PRINT-HISTOGRAM.
+(defun print-histogram (iterations)
+  (new-histogram 11)
+  (dotimes (i iterations)
+    (record-value (random 11)))
+  (dotimes (i 11)
+    (print-hist-line i)))
 
