@@ -150,3 +150,11 @@
     (setf (gethash decipher-to *encipher-table*) nil))
   'undo-substituion-ok)
 
+;;; d.
+;;; Look up the documentation for the CLRHASH function, and write a function CLEAR that clears the two hash tables used in this problem.
+(defun clear ()
+  (clrhash *decipher-table*)
+  (clrhash *encipher-table*)
+  'clear-ok)
+
+
