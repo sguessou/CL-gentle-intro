@@ -172,3 +172,11 @@
              (gethash char *decipher-table*)))
       (when new-char
         (setf (aref new-str i) new-char))))) 
+
+;;; f.
+;;; Write a function SHOW-LINE that displays one line of cryptogram text, with the deciphered text displayed beneath it.
+(defun show-line (line)
+  (format t "~&~A" line)
+  (format t "~&~A"
+          (decipher-string line)))
+
