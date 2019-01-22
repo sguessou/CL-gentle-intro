@@ -134,11 +134,9 @@
 ;;; b.
 ;;; Write a function MAKE-SUBSTITUTION that takes two character objects as input and stores the appropriate entries in *DECIPHER-TABLE* and *ENCIPHER-TABLE* so that the first letter deciphers to the second and the second letter enciphers to the first.
 ;;; This function does not need to check if either letter already has an entry in these hash tables.
-(defun make-substitution (obj)
-  (setf (gethash (first obj) *decipher-table*)
-        (second obj))
-  (setf (gethash (second obj) *encipher-table*)
-        (first obj))
+(defun make-substitution (a b)
+  (setf (gethash a *decipher-table*) b)
+  (setf (gethash b *encipher-table*) a)
   'make-substituion-ok)
 
 ;;; c.
@@ -157,4 +155,20 @@
   (clrhash *encipher-table*)
   'clear-ok)
 
-
+;;; e.
+;;; Write a function DECIPHER-STRING that takes a single encoded string as input and return a new, partially decoded string. It should begin by making a new string the same length as the input, containing all spaces.
+;;; Here is how to do that, assuming the variable LEN holds the length: (make-string len :initial-element #\Space).
+;;; Next the function should iterate through the elements of the input string, which are character objects. For each character that deciphers to something non-NIL, that value should be inserted into the corresponding position in the new string.
+;;; Finally, the function should return the new string.
+;;; When testing this function, make sure its inputs are all lowercase. 
+(defun decipher-string (str)
+  (do* ((len (length str)) 
+        (new-str (make-string len 
+                              :initial-element #\Space))
+        (i 0 (1+ i)))
+       ((equal i len) new-str)
+    (let* ((char (aref str i))
+           (new-char 
+             (gethash char *decipher-table*)))
+      (when new-char
+        (setf (aref new-str i) new-char))))) 
