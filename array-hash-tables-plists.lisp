@@ -131,6 +131,10 @@
 
 (setf *encipher-table* (make-hash-table))
 
+(setf crypto-text
+      '("zj ze kljjls jf slapzi ezvlij pib kl jufwxuj p hffv jupi jf"
+        "enlpo pib slafml pvv bfwkj"))
+
 ;;; b.
 ;;; Write a function MAKE-SUBSTITUTION that takes two character objects as input and stores the appropriate entries in *DECIPHER-TABLE* and *ENCIPHER-TABLE* so that the first letter deciphers to the second and the second letter enciphers to the first.
 ;;; This function does not need to check if either letter already has an entry in these hash tables.
@@ -179,4 +183,10 @@
   (format t "~&~A" line)
   (format t "~&~A"
           (decipher-string line)))
+
+;;; g.
+;;; Write a function SHOW-TEXT that takes a cryptogram (list of strings) as input and displays the lines as in the examples at the beginning of this exercise.
+(defun show-text (cryptogram)
+  (dolist (element cryptogram)
+    (format t "~&~A" element)))
 
