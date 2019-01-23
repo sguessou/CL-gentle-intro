@@ -190,3 +190,20 @@
   (dolist (element cryptogram)
     (format t "~&~A" element)))
 
+;;; h.
+;;; Type in the definition of GET-FIRST-CHAR, which returns the first character in the lowercase printed of an object.
+(defun get-first-char (x)
+  (char-downcase
+   (char (format nil "~A" x) 0)))
+
+;;; i.
+;;; Write a function READ-LETTER that reads an object from the keyboard. If the object is the symbol END or UNDO, it should be returned as the value of READ-LETTER.
+;;; Otherwise READ-LETTER should use GET-FIRST-CHAR on the object to extract the first character of its printed representation; it should return that character as its result.
+(defun read-letter ()
+  (do ((answer nil))
+      (nil)
+    (setf answer (read))
+    (if (or (equal answer 'end)
+            (equal answer 'undo))
+        (return answer)
+        (return (get-first-char answer)))))
