@@ -184,8 +184,11 @@
 ;;; g.
 ;;; Write a function SHOW-TEXT that takes a cryptogram (list of strings) as input and displays the lines as in the examples at the beginning of this exercise.
 (defun show-text (cryptogram)
+  (format t "~&-------------------------------------")
   (dolist (element cryptogram)
-    (format t "~&~A" element)))
+    (format t "~&~A" element)
+    (format t "~&~A" (decipher-string element)))
+  (format t "~&-------------------------------------"))
 
 ;;; h.
 ;;; Type in the definition of GET-FIRST-CHAR, which returns the first character in the lowercase printed of an object.
@@ -237,6 +240,25 @@
         (undo-substitution l d)
         (format t "~&´~A´ cannot be undone." l))))
 
-
+;;; Write the main function SOLVE that takes a cryptogram as input. SOLVE should perform the following loop.
+;;; First it should display the cryptogram. 
+;;; Then it should ask "Substitute which letter?" and call READ-LETTER.
+;;; If the result is a character, SOLVE should call SUB-LETTER; if the result is the symbol UNDO, it should call UNDO-LETTER;
+;;; If the result is the symbol END, it should return T;
+;;; otherwise it should issue an error message.
+;;; Then it should go back to the beginning of the loop, unless the value returned by READ-LETTER was END.
+(defun solve (cryptogram)
+  (clear)
+  (show-text cryptogram)
+  (do ((answer nil))
+      (nil)
+    (format t "~&Substitute which letter? ")
+    (setf answer (read-letter))
+    (cond ((equal answer 'undo) 
+           (undo-letter)
+           (show-text cryptogram))
+          ((equal answer 'end) (return t))
+          (t (sub-letter answer)
+             (show-text cryptogram))))) 
               
 
