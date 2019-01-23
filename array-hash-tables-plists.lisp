@@ -207,3 +207,27 @@
             (equal answer 'undo))
         (return answer)
         (return (get-first-char answer)))))
+
+;;; j.
+;;; Write a function SUB-LETTER that takes a character object as input. If that character has been deciphered already, SUB-LETTER should print an error message that tells to what the letter has been deciphered.
+;;; Otherwise SUB-LETTER should ask "What does (letter) decipher to?" and read a letter. 
+;;; If the result is a character and it has not yet been enciphered, SUB-LETTER should call MAKE-SUBSTITION to record the substitution.
+;;; Otherwise an appropriate error message should be printed.
+(defun sub-letter (c)
+  (let ((deciphered (gethash c *decipher-table*)))
+    (cond ((not (null deciphered)) (format t 
+                                     "~&´~A´ has already been deciphered as ´~A´" 
+                                     c deciphered))
+        (t (format t "~&What does ´~A´ decipher to? " c)
+           (setf answer (read))
+           (setf answer (get-first-char answer))
+           (setf deciphered (gethash answer *decipher-table*))
+           (if deciphered
+               (format t "~&´~A´ has already been deciphered as ´~A´" 
+                       answer deciphered)
+               (make-substitution c answer))))))
+
+
+     
+              
+
