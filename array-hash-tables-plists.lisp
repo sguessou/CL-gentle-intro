@@ -140,17 +140,14 @@
 ;;; This function does not need to check if either letter already has an entry in these hash tables.
 (defun make-substitution (a b)
   (setf (gethash a *decipher-table*) b)
-  (setf (gethash b *encipher-table*) a)
-  'make-substituion-ok)
+  (setf (gethash b *encipher-table*) a))
 
 ;;; c.
 ;;; Write a function UNDO-SUBSTITUTION that takes one letter as input. 
 ;;; It should set the *DECIPHER-TABLE* entry of that letter, and the *ENCIPHER-TABLE* entry of the letter it deciphered to, to NIL.
-(defun undo-substitution (l)
-  (let ((decipher-to (gethash l *decipher-table*)))
-    (setf (gethash l *decipher-table*) nil)
-    (setf (gethash decipher-to *encipher-table*) nil))
-  'undo-substituion-ok)
+(defun undo-substitution (a b)
+  (setf (gethash a *decipher-table*) nil)
+  (setf (gethash b *encipher-table*) nil))
 
 ;;; d.
 ;;; Look up the documentation for the CLRHASH function, and write a function CLEAR that clears the two hash tables used in this problem.
@@ -227,7 +224,19 @@
                        answer deciphered)
                (make-substitution c answer))))))
 
+;;; k.
+;;; Write a function UNDO-LETTER that asks "Undo which letter?" and reads in a character.
+;;; If that character has been deciphered UNDO-LETTER should call UNDO-SUBSTITUTION on the letter.
+;;; Otherwise an appropriate error message should be printed.
+(defun undo-letter ()
+  (format t "~&Undo which letter? ")
+  (let* ((l (read))
+         (l (get-first-char l))
+         (d (gethash l *decipher-table*)))
+    (if d
+        (undo-substitution l d)
+        (format t "~&´~A´ cannot be undone." l))))
 
-     
+
               
 
