@@ -17,3 +17,13 @@
          (clone-b ,b))
     (setf ,a clone-b)
     (setf ,b clone-a))) 
+
+;;; Ex 14.5
+;;; Write a macro SET-MUTUAL that takes two variable names as input and expands into an expression that sets each variable to the name of the other. 
+;;; (SET-MUTUAL A B) should set A to 'B, and B to 'A.
+(defmacro set-mutual (a b)
+  `(let ((var-a ',b)
+         (var-b ',a))
+     (setf ,a var-a)
+     (setf ,b var-b)))
+
