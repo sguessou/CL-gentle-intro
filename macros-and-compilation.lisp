@@ -6,3 +6,14 @@
 ;;; Write a SET-NIL macro that sets a variable to NIL.
 (defmacro set-nil (var)
   (list 'setq var nil))
+
+;;; Ex 14.4
+;;; Write a macro called SIMPLE-ROTATEF that switches the value of two variables.
+;;; for example, if A is two and B is seven, then (SIMPLE-ROTATEF A B) shoul make A seven and B two.
+;;; Obviously, setting A to B first, and then setting B to A won't work.
+;;; Your macro should expand into a LET expression that holds on to the original values of the two variables and then assigns them their new values in its body.
+(defmacro simple-rotatef (a b)
+  `(let ((clone-a ,a)
+         (clone-b ,b))
+    (setf ,a clone-b)
+    (setf ,b clone-a))) 
