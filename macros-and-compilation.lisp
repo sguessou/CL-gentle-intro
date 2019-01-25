@@ -27,3 +27,19 @@
      (setf ,a var-a)
      (setf ,b var-b)))
 
+;;; Ex 14.6
+;;; Write a macro called VARIABLE-CHAIN that accepts any number of inputs.
+;;; The expression (VARIABLE-CHAIN A B C D) should expand into an expression that sets A to 'B, B to 'C, and C to 'D.
+(defmacro set-zero (&rest vars)
+  `(progn ,@(mapcar #'(lambda (var)
+                        (list 'setf var 0))
+                    vars)
+          '(zeroed ,@vars)))
+
+(defmacro variable-chain (&rest vars)
+  `(progn ,@(mapcar #'(lambda (a b)
+              `(setf ,a ',b))
+          vars
+          (rest vars))
+          '(done ,@vars)))
+
