@@ -43,3 +43,12 @@
           (rest vars))
           '(done ,@vars)))
 
+;;; Alternative solution
+(defmacro variable-chain (&rest vars)
+  `(progn
+    ,@(do ((v vars (rest v))
+            (res nil))
+           ((null (rest v)) (reverse res))
+         (push `(setf ,(first v)
+                      ',(second v))
+               res))))
