@@ -108,7 +108,8 @@
                             :action action)))
     (setf *arcs* (nconc *arcs* (list new-arc)))
     (setf (node-outputs from)
-          (list new-arc))
+          (nconc (node-outputs from)
+                 (list new-arc)))
     (setf (node-inputs to)
           (nconc (node-inputs to)
                  (list new-arc)))
@@ -121,19 +122,19 @@
     (one-transition)))
 
 (defun one-transition ()
-  (format t "~&State ~A. Input: "
-          (node-name *current-node*))
-  (let* ((ans (read))
-         (arc (find ans
-                    (node-outputs *current-node*)
-                    :key #'arc-label)))
-    (unless arc
-      (format t "~&No arc from ~A has label ~A.~%"
-              (node-name *current-node*) ans)
-      (return-from one-transition nil))
-    (let ((new (arc-to arc)))
-      (format t "~&~A" (arc-action arc))
-      (setf *current-node* new))))
+   (format t "~&State ~A. Input: "
+           (node-name *current-node*))
+   (let* ((ans (read))
+          (arc (find ans
+                     (node-outputs *current-node*)
+                     :key #'arc-label)))
+     (unless arc
+       (format t "~&No arc from ~A has label ~A.~%"
+               (node-name *current-node*) ans)
+       (return-from one-transition nil))
+     (let ((new (arc-to arc)))
+       (format t "~&~A" (arc-action arc))
+       (setf *current-node* new))))
 
 (defnode start)
 (defnode have-5)
@@ -161,7 +162,27 @@
 
 (defarc have-20 nickel      have-20 "Nickel returned.")
 (defarc have-20 dime        have-20 "Dime returned.")
-(defarc have-20 gum-button  end     "Deliver gum, nicke change.")
+(defarc have-20 gum-button  end     "Deliver gum, nickel change.")
 
 (defarc have-20 mint-button end     "Deliver mints.")
 (defarc have-20 coin-return start   "Returned twenty cents.")
+
+;;; Ex 14.7
+;;; Extend the vending machine example to sell chocolate bars for 25 cents.
+;;; Make it accept quarters as well as nickels and dimes.
+;;; When you put in a quarter it should go "Ker-chunck!"
+
+(defnode have-25)
+(defnode have-30)
+(defnode have-35)
+(defarc start    quarter       have-25  "Ker-chunck!")
+(defarc have-5   quarter       have-30  "Ker-chunck!")
+(defarc have-10  quarter       have-35  "Ker-chunck!")
+
+(defarc have-25  choc-button   end      "Deliver chocolate.")
+(defarc have-30  choc-button   end      "Deliver chocolate, nickel change.")
+(defarc have-35  choc-button   end      "Deliver chocolate, dime change.")
+
+(defarc have-25  coin-return   start   "Returned twenty five cents.")
+(defarc have-30  coin-return   start   "Returned thirty cents.")
+(defarc have-35  coin-return   start   "Returned thirty five cents.")
