@@ -186,3 +186,22 @@
 (defarc have-25  coin-return   start   "Returned twenty five cents.")
 (defarc have-30  coin-return   start   "Returned thirty cents.")
 (defarc have-35  coin-return   start   "Returned thirty five cents.")
+
+;;; Ex 14.11
+;;; In this keyboard exercise we will write a compiler for finite state machines that turns each node into a function.
+;;; The definition of the vending machine's nodes and arcs should already be loaded into your Lisp before beginning the exercise.
+
+;;; a.
+;;; Write a function COMPILE-ARC that takes an arc as input and returns a COND clause, following the example shown previously.
+;;; Test your function on some of the elements in the list *ARCS*.
+;;; (COMPILE-ARC (FIRST *ARCS*)) should return this list:
+((equal this-input 'nickel)
+ (format t "~&~A" "Clunk!")
+ (have-5 (rest input-syms)))
+
+(defun compile-arc (arc)
+  `((equal this-input ',(arc-label arc))
+    (format t "~&~A" ,(arc-action arc))
+    (,(node-name (arc-to arc)) (rest input-syms))))
+
+
