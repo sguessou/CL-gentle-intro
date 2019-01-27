@@ -204,4 +204,20 @@
     (format t "~&~A" ,(arc-action arc))
     (,(node-name (arc-to arc)) (rest input-syms))))
 
+;;; b.
+;;; Write a function COMPILE-NODE that takes a node as input and returns a DEFUN expression for that node.
+;;; (COMPILE-NODE (FIND-NODE 'START)) should return the DEFUN shown previously.
+(defun compile-node (node)
+  `(defun ,(node-name node) (input-syms
+                             &aux (this-input (first syms)))
+     (cond ((null input-syms) ',(node-name node))
+           ,@(cn-helper node)
+           (t (error "No arc for ~A with label ~A."
+                     ',(node-name node) this-input)))))
 
+(defun cn-helper (node)
+  (do ((result nil)
+       (arcs (node-outputs node) (rest arcs)))
+       ((null arcs) result)
+    (setf result 
+          (cons (compile-arc (first arcs)) result))))
