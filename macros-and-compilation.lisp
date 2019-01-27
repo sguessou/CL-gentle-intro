@@ -209,10 +209,10 @@
 ;;; (COMPILE-NODE (FIND-NODE 'START)) should return the DEFUN shown previously.
 (defun compile-node (node)
   `(defun ,(node-name node) (input-syms
-                             &aux (this-input (first syms)))
+                             &aux (this-input (first input-syms)))
      (cond ((null input-syms) ',(node-name node))
            ,@(cn-helper node)
-           (t (error "No arc for ~A with label ~A."
+           (t (format t "No arc for ~A with label ~A."
                      ',(node-name node) this-input)))))
 
 (defun cn-helper (node)
@@ -221,3 +221,30 @@
        ((null arcs) result)
     (setf result 
           (cons (compile-arc (first arcs)) result))))
+
+;;; Book's solution
+(defun compile-node (node)
+  (let ((name (node-name node))
+        (arc-clauses
+         (mapcar #'compile-arc
+                 (node-outputs node))))
+    `(defun ,name (input-syms
+                   &aux (this-input
+                         (first input-syms)))
+       (cond ((null input-syms) ',name)
+             ,@arc-clauses
+             (t (format t
+                        "~&There is no arc from ~A with label ~S"
+                        ',name this-input))))))
+;;; c.
+;;; Write a macro COMPILE-MACHINE that expands into a PROGN containing a DEFUN for each node in *NODES*.
+(defmacro compile-machine ()
+  `(progn ,@(mapcar #'compile-node *nodes*)))
+
+;;; d.
+;;; Compile the vending machine. What does the expression (START '(DIME DIME DIME GUM-BUTTO)) produce?
+Clink!
+Clink!
+Dime returned.
+Deliver gum, nickel change.
+End
